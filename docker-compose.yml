@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: ghcr.io/TON_USERNAME/kiwinet-portfolio:latest
+    image: ghcr.io/Rookain-Kiwi/kiwinet-portfolio:latest
     build:
       context: .
       dockerfile: Dockerfile
