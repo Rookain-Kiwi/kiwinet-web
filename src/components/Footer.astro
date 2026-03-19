@@ -1,0 +1,61 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const year = new Date().getFullYear();
+
+const labels = {
+  fr: { uptime: "Tous les services opérationnels", copy: "Loïc Kergoat" },
+  en: { uptime: "All services operational",        copy: "Loïc Kergoat" },
+};
+
+const t = labels[lang];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span class="footer__copy">© {year} {t.copy}</span>
+
+    <a
+      href="https://status.kiwinet.me"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="badge badge--green footer__uptime"
+      aria-label="Page de statut des services"
+    >
+      <span class="badge__dot" aria-hidden="true"></span>
+      {t.uptime}
+    </a>
+  </div>
+</footer>
+
+<style>
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer__copy {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer__uptime {
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.footer__uptime:hover { opacity: 0.75; }
+</style>

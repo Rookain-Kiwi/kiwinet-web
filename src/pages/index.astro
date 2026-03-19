@@ -1,13 +1,22 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar     from "../components/Navbar.astro";
+import Hero       from "../components/Hero.astro";
+import Cards      from "../components/Cards.astro";
+import Footer     from "../components/Footer.astro";
+
+const lang = "fr";
 ---
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>kiwinet.me</title>
-  </head>
-  <body>
-    <h1>Hello World — kiwinet.me</h1>
-    <p>Portfolio déployé avec Astro, Nginx, Traefik et Docker.</p>
-    <p>Test pour voir la répercussion du push</p>
-  </body>
-</html>
+
+<BaseLayout
+  title="Loïc Kergoat — Rookain | Portfolio DevOps"
+  description="Portfolio self-hosted de Loïc Kergoat — infrastructure DevOps open source, reverse proxy, CI/CD, monitoring."
+  lang={lang}
+>
+  <Navbar lang={lang} currentPath="/" />
+  <main>
+    <Hero  lang={lang} />
+    <Cards lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

@@ -1,0 +1,167 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const content = {
+  fr: {
+    tagline: "Ancien développeur et responsable qualité en reconversion DevOps — je construis et j'automatise des infrastructures open source, auto-hébergées, du reverse proxy au pipeline CI/CD.",
+    available: "Disponible pour des opportunités DevOps ou des collaborations techniques.",
+  },
+  en: {
+    tagline: "Former developer and quality manager, transitioning into DevOps — I build and automate open source, self-hosted infrastructures, from reverse proxy to CI/CD pipelines.",
+    available: "Open to DevOps opportunities and technical collaborations.",
+  },
+};
+
+const t = content[lang];
+
+const links = [
+  { href: "https://github.com/Rookain-Kiwi",                       label: "GitHub"   },
+  { href: "https://www.linkedin.com/in/loïc-kergoat-51150131a",    label: "LinkedIn" },
+  { href: "mailto:loic.kergoat.business@kiwinet.me",                label: "Email"    },
+  { href: "https://discord.gg/svTCTM7m",                            label: "Discord"  },
+];
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <div class="hero__name-row">
+        <h1 class="hero__name">Loïc Kergoat</h1>
+        <span class="hero__alias">Rookain</span>
+      </div>
+
+      <p class="hero__tagline">{t.tagline}</p>
+      <p class="hero__available">{t.available}</p>
+
+      <ul class="hero__links" aria-label="Liens sociaux">
+        {links.map(({ href, label }) => (
+          <li>
+            <a href={href} class="hero__link" target="_blank" rel="noopener noreferrer">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="hero__avatar" aria-hidden="true">
+      <img
+        src="/avatar.png"
+        alt="Avatar de Loïc Kergoat"
+        class="hero__avatar-img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hero__avatar-fallback">LK</div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 56px 0 48px;
+}
+
+.hero__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.hero__text { flex: 1; }
+
+.hero__name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hero__name {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.hero__alias {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.hero__tagline {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 12px;
+}
+
+.hero__available {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.hero__link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.hero__link:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-md);
+  background: var(--color-bg);
+}
+
+.hero__avatar {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.hero__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+}
+
+@media (max-width: 600px) {
+  .hero__inner   { flex-direction: column-reverse; gap: 24px; }
+  .hero__avatar  { width: 64px; height: 64px; }
+  .hero__name    { font-size: 22px; }
+}
+</style>

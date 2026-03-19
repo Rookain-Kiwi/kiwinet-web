@@ -1,0 +1,185 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const cards = {
+  fr: [
+    {
+      href:  "/about",
+      title: "À propos",
+      desc:  "Mon parcours, mes compétences, mon CV",
+      color: "purple",
+    },
+    {
+      href:  "/projects",
+      title: "Projets",
+      desc:  "Les projets que je construis et héberge",
+      color: "teal",
+    },
+    {
+      href:  "/stack",
+      title: "Stack",
+      desc:  "L'infrastructure derrière ce site",
+      color: "amber",
+    },
+    {
+      href:  "/contact",
+      title: "Contact",
+      desc:  "Me contacter ou rejoindre le serveur",
+      color: "coral",
+    },
+  ],
+  en: [
+    {
+      href:  "/en/about",
+      title: "About",
+      desc:  "My background, skills and résumé",
+      color: "purple",
+    },
+    {
+      href:  "/en/projects",
+      title: "Projects",
+      desc:  "Projects I build and self-host",
+      color: "teal",
+    },
+    {
+      href:  "/en/stack",
+      title: "Stack",
+      desc:  "The infrastructure behind this site",
+      color: "amber",
+    },
+    {
+      href:  "/en/contact",
+      title: "Contact",
+      desc:  "Get in touch or join the server",
+      color: "coral",
+    },
+  ],
+};
+
+const badges = {
+  fr: [
+    { label: "4 services en production", green: true  },
+    { label: "CI/CD GitHub Actions",     green: false },
+    { label: "Prometheus + Grafana",     green: false },
+    { label: "ARM AArch64",              green: false },
+  ],
+  en: [
+    { label: "4 services in production", green: true  },
+    { label: "GitHub Actions CI/CD",     green: false },
+    { label: "Prometheus + Grafana",     green: false },
+    { label: "ARM AArch64",              green: false },
+  ],
+};
+
+const items = cards[lang];
+const tags  = badges[lang];
+---
+
+<section class="cards-section">
+  <div class="container">
+    <ul class="cards-grid">
+      {items.map(({ href, title, desc, color }) => (
+        <li>
+          <a href={href} class={`card card--${color}`}>
+            <div class="card__dot" aria-hidden="true"></div>
+            <div class="card__title">{title}</div>
+            <div class="card__desc">{desc}</div>
+            <span class="card__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="badges-row" aria-label="État de l'infrastructure">
+      {tags.map(({ label, green }) => (
+        <span class={`badge${green ? " badge--green" : ""}`}>
+          {green && <span class="badge__dot" aria-hidden="true"></span>}
+          {label}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.cards-section {
+  padding: 40px 0 48px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 20px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.15s, transform 0.1s;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--color-border-md);
+  transform: translateY(-1px);
+}
+
+.card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.card__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.card__desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card__arrow {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  transition: transform 0.15s;
+}
+
+.card:hover .card__arrow { transform: translateX(3px); }
+
+/* Couleurs des points par card */
+.card--purple .card__dot { background: #7F77DD; }
+.card--teal   .card__dot { background: #1D9E75; }
+.card--amber  .card__dot { background: #BA7517; }
+.card--coral  .card__dot { background: #D85A30; }
+
+/* Badges */
+.badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .cards-grid { grid-template-columns: 1fr; }
+}
+</style>

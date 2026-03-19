@@ -1,0 +1,134 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+  currentPath?: string;
+}
+
+const { lang = "fr", currentPath = "/" } = Astro.props;
+
+const links = {
+  fr: [
+    { href: "/about",    label: "À propos" },
+    { href: "/projects", label: "Projets"  },
+    { href: "/stack",    label: "Stack"    },
+    { href: "/contact",  label: "Contact"  },
+  ],
+  en: [
+    { href: "/en/about",    label: "About"    },
+    { href: "/en/projects", label: "Projects" },
+    { href: "/en/stack",    label: "Stack"    },
+    { href: "/en/contact",  label: "Contact"  },
+  ],
+};
+
+const altLang    = lang === "fr" ? "en" : "fr";
+const altLangHref = lang === "fr"
+  ? currentPath.replace(/^\//, "/en/")
+  : currentPath.replace(/^\/en/, "") || "/";
+
+const nav = links[lang];
+---
+
+<header class="navbar">
+  <div class="container navbar__inner">
+    <a href={lang === "fr" ? "/" : "/en"} class="navbar__logo">
+      Loïc Kergoat
+      <span class="navbar__alias">/ Rookain</span>
+    </a>
+
+    <nav class="navbar__nav" aria-label="Navigation principale">
+      <ul class="navbar__links">
+        {nav.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class={`navbar__link${currentPath === href ? " navbar__link--active" : ""}`}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href={altLangHref} class="navbar__lang" aria-label={`Switch to ${altLang.toUpperCase()}`}>
+      {altLang.toUpperCase()}
+    </a>
+  </div>
+</header>
+
+<style>
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  gap: 24px;
+}
+
+.navbar__logo {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar__alias {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.navbar__nav { flex: 1; display: flex; justify-content: center; }
+
+.navbar__links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.navbar__link {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background 0.15s;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+}
+
+.navbar__lang {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  transition: color 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+
+.navbar__lang:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-md);
+}
+
+@media (max-width: 600px) {
+  .navbar__links { gap: 0; }
+  .navbar__link  { padding: 6px 8px; font-size: 12px; }
+  .navbar__alias { display: none; }
+}
+</style>
