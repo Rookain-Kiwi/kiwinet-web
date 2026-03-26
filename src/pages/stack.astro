@@ -1,0 +1,67 @@
+---
+import BaseLayout       from "../layouts/BaseLayout.astro";
+import Navbar           from "../components/Navbar.astro";
+import Footer           from "../components/Footer.astro";
+import StackArchDiagram from "../components/StackArchDiagram.astro";
+import StackLayers      from "../components/StackLayers.astro";
+import StackTable       from "../components/StackTable.astro";
+
+const lang = "fr";
+---
+
+<BaseLayout
+  title="Stack technique — kiwinet.me"
+  description="Architecture et choix techniques de l'infrastructure auto-hébergée kiwinet.me"
+  lang={lang}
+>
+  <Navbar lang={lang} currentPath="/stack" />
+
+  <main>
+    <section class="stack-header">
+      <div class="container">
+        <h1 class="stack-title">Stack technique</h1>
+        <p class="stack-intro">
+          Cette infrastructure est entièrement auto-hébergée sur une VM ARM64 à domicile.
+          Chaque outil a été choisi pour trois raisons majeures : open source, représentatif
+          des standards en entreprise, et cohérent avec l'ensemble de la chaîne.
+          Cette page a pour but de documenter l'architecture et les choix qui la composent.
+        </p>
+      </div>
+    </section>
+
+    <section class="stack-content">
+      <div class="container">
+        <StackArchDiagram lang={lang} />
+        <StackLayers      lang={lang} />
+        <StackTable       lang={lang} />
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+.stack-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stack-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.stack-intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 680px;
+}
+
+.stack-content {
+  padding: 40px 0 56px;
+}
+</style>

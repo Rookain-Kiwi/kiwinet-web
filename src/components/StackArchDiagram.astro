@@ -1,0 +1,124 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const content = {
+  fr: {
+    macroTitle:    "Vue d'ensemble",
+    detailTitle:   "Architecture détaillée",
+    macroNote:     "Traefik est le point d'entrée unique de la VM : il gère le routage, le SSL automatique et l'isolation des services. Minecraft, protocole TCP brut, est le seul service à ne pas transiter par Traefik.",
+    detailNote:    "L'accès à l'interface d'administration de la Freebox ne passe pas par le réseau public. Il transite exclusivement par un tunnel WireGuard — zéro surface d'attaque, authentification par clé, clé distincte par appareil.",
+    macroArch: `Internet
+  └── freebox.kiwinet.me (point d'entrée)
+           └── Traefik (reverse proxy + SSL Let's Encrypt)
+                    ├── kiwinet.me           → Site Astro/Nginx
+                    ├── status.kiwinet.me    → Uptime Kuma
+                    ├── grafana.kiwinet.me   → Grafana
+                    ├── plex.kiwinet.me      → Plex Media Server
+                    └── traefik.kiwinet.me   → Dashboard (auth-basic)
+  └── minecraft.kiwinet.me:25565 (TCP direct, hors Traefik)`,
+    detailArch: `Internet
+  │
+  ├── :80/:443  → freebox.kiwinet.me → Traefik
+  │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
+  │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
+  │                                        ├── plex.kiwinet.me        → Plex Media Server (hors Docker)
+  │                                        ├── status.kiwinet.me      → Container uptime-kuma
+  │                                        └── grafana.kiwinet.me     → Container grafana
+  │
+  ├── :25565    → minecraft.kiwinet.me → Minecraft (TCP brut, hors Docker)
+  ├── :22       → SSH (accès VM, clé ed25519)
+  └── :22121    → WireGuard VPN (accès réseau local chiffré, clé par appareil)`,
+  },
+  en: {
+    macroTitle:    "Overview",
+    detailTitle:   "Detailed architecture",
+    macroNote:     "Traefik is the single entry point of the VM: it handles routing, automatic SSL and service isolation. Minecraft, a raw TCP protocol, is the only service that does not go through Traefik.",
+    detailNote:    "Access to the Freebox admin interface is not publicly exposed. It goes exclusively through a WireGuard tunnel — zero attack surface, key-based authentication, one key per device.",
+    macroArch: `Internet
+  └── freebox.kiwinet.me (entry point)
+           └── Traefik (reverse proxy + SSL Let's Encrypt)
+                    ├── kiwinet.me           → Astro/Nginx site
+                    ├── status.kiwinet.me    → Uptime Kuma
+                    ├── grafana.kiwinet.me   → Grafana
+                    ├── plex.kiwinet.me      → Plex Media Server
+                    └── traefik.kiwinet.me   → Dashboard (auth-basic)
+  └── minecraft.kiwinet.me:25565 (direct TCP, outside Traefik)`,
+    detailArch: `Internet
+  │
+  ├── :80/:443  → freebox.kiwinet.me → Traefik
+  │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
+  │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
+  │                                        ├── plex.kiwinet.me        → Plex Media Server (outside Docker)
+  │                                        ├── status.kiwinet.me      → Container uptime-kuma
+  │                                        └── grafana.kiwinet.me     → Container grafana
+  │
+  ├── :25565    → minecraft.kiwinet.me → Minecraft (raw TCP, outside Docker)
+  ├── :22       → SSH (VM access, ed25519 key)
+  └── :22121    → WireGuard VPN (encrypted LAN access, one key per device)`,
+  },
+};
+
+const t = content[lang];
+---
+
+<div class="arch-block">
+  <h2 class="arch-section-title">{t.macroTitle}</h2>
+  <div class="arch-diagram">
+    <pre class="arch-pre">{t.macroArch}</pre>
+  </div>
+  <p class="arch-note">{t.macroNote}</p>
+</div>
+
+<div class="arch-block">
+  <h2 class="arch-section-title">{t.detailTitle}</h2>
+  <div class="arch-diagram">
+    <pre class="arch-pre">{t.detailArch}</pre>
+  </div>
+  <p class="arch-note">{t.detailNote}</p>
+</div>
+
+<style>
+.arch-block {
+  margin-bottom: 2.5rem;
+}
+
+.arch-section-title {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.arch-diagram {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+}
+
+.arch-pre {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  white-space: pre;
+  margin: 0;
+}
+
+.arch-note {
+  margin-top: 0.75rem;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding-left: 0.875rem;
+  border-left: 2px solid var(--color-border-md);
+}
+</style>

@@ -1,0 +1,265 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const content = {
+  fr: {
+    tableTitle:   "Récapitulatif des outils",
+    badgesTitle:  "État des services",
+    githubLabel:  "Voir tous les repos sur GitHub",
+    badgesNote:   "Badges live — état en temps réel depuis Uptime Kuma.",
+    colRole:      "Rôle",
+    colTool:      "Outil",
+    colWhy:       "Pourquoi ce choix",
+    colRepo:      "Repo",
+    rows: [
+      { role: "Reverse proxy",   tool: "Traefik v3",                          why: "Natif Docker, SSL auto, standard conteneurs",    repo: "kiwinet-infra"       },
+      { role: "SSL",             tool: "Let's Encrypt",                        why: "Gratuit, automatique, reconnu universellement",  repo: "kiwinet-infra"       },
+      { role: "Framework front", tool: "Astro",                                why: "Statique, léger, image Docker ~15 Mo",           repo: "kiwinet-web"         },
+      { role: "Serveur fichiers",tool: "Nginx Alpine",                         why: "Minimaliste, multi-stage build",                 repo: "kiwinet-web"         },
+      { role: "Registry",        tool: "GHCR",                                 why: "Cohérence écosystème GitHub",                    repo: "kiwinet-web"         },
+      { role: "CI/CD",           tool: "GitHub Actions + SSH",                 why: "Auditable, maîtrise des secrets",                repo: "kiwinet-web"         },
+      { role: "Statut public",   tool: "Uptime Kuma",                          why: "Page publique + alertes Discord",                repo: "kiwinet-status"      },
+      { role: "Métriques",       tool: "Prometheus + cAdvisor + Node Exporter",why: "Standard industrie",                             repo: "kiwinet-monitoring"  },
+      { role: "Logs",            tool: "Loki + Promtail",                      why: "Cohérence Grafana Labs",                         repo: "kiwinet-monitoring"  },
+      { role: "Dashboards",      tool: "Grafana",                              why: "Visualisation unifiée",                          repo: "kiwinet-monitoring"  },
+      { role: "VPN",             tool: "WireGuard",                            why: "Zéro exposition, clé par appareil",              repo: "kiwinet-infra"       },
+    ],
+    badges: [
+      { label: "kiwinet.me",          imgAlt: "statut kiwinet.me",          src: "https://status.kiwinet.me/api/badge/1/status" },
+      { label: "traefik.kiwinet.me",  imgAlt: "statut traefik.kiwinet.me",  src: "https://status.kiwinet.me/api/badge/2/status" },
+      { label: "status.kiwinet.me",   imgAlt: "statut status.kiwinet.me",   src: "https://status.kiwinet.me/api/badge/3/status" },
+      { label: "grafana.kiwinet.me",  imgAlt: "statut grafana.kiwinet.me",  src: "https://status.kiwinet.me/api/badge/4/status" },
+      { label: "plex.kiwinet.me",     imgAlt: "statut plex.kiwinet.me",     src: "https://status.kiwinet.me/api/badge/5/status" },
+      { label: "minecraft.kiwinet.me",imgAlt: "statut minecraft.kiwinet.me",src: "https://status.kiwinet.me/api/badge/6/status" },
+    ],
+  },
+  en: {
+    tableTitle:   "Tools summary",
+    badgesTitle:  "Service status",
+    githubLabel:  "View all repos on GitHub",
+    badgesNote:   "Live badges — real-time status from Uptime Kuma.",
+    colRole:      "Role",
+    colTool:      "Tool",
+    colWhy:       "Why this choice",
+    colRepo:      "Repo",
+    rows: [
+      { role: "Reverse proxy",   tool: "Traefik v3",                          why: "Native Docker, auto SSL, container standard",    repo: "kiwinet-infra"       },
+      { role: "SSL",             tool: "Let's Encrypt",                        why: "Free, automatic, universally trusted",           repo: "kiwinet-infra"       },
+      { role: "Frontend",        tool: "Astro",                                why: "Static output, lightweight, ~15 MB Docker image",repo: "kiwinet-web"         },
+      { role: "File server",     tool: "Nginx Alpine",                         why: "Minimal, multi-stage build",                     repo: "kiwinet-web"         },
+      { role: "Registry",        tool: "GHCR",                                 why: "GitHub ecosystem coherence",                     repo: "kiwinet-web"         },
+      { role: "CI/CD",           tool: "GitHub Actions + SSH",                 why: "Auditable, secrets management",                  repo: "kiwinet-web"         },
+      { role: "Public status",   tool: "Uptime Kuma",                          why: "Public page + Discord alerts",                   repo: "kiwinet-status"      },
+      { role: "Metrics",         tool: "Prometheus + cAdvisor + Node Exporter",why: "Industry standard",                              repo: "kiwinet-monitoring"  },
+      { role: "Logs",            tool: "Loki + Promtail",                      why: "Grafana Labs coherence",                         repo: "kiwinet-monitoring"  },
+      { role: "Dashboards",      tool: "Grafana",                              why: "Unified visualisation",                          repo: "kiwinet-monitoring"  },
+      { role: "VPN",             tool: "WireGuard",                            why: "Zero exposure, one key per device",              repo: "kiwinet-infra"       },
+    ],
+    badges: [
+      { label: "kiwinet.me",          imgAlt: "kiwinet.me status",          src: "https://status.kiwinet.me/api/badge/1/status" },
+      { label: "traefik.kiwinet.me",  imgAlt: "traefik.kiwinet.me status",  src: "https://status.kiwinet.me/api/badge/2/status" },
+      { label: "status.kiwinet.me",   imgAlt: "status.kiwinet.me status",   src: "https://status.kiwinet.me/api/badge/3/status" },
+      { label: "grafana.kiwinet.me",  imgAlt: "grafana.kiwinet.me status",  src: "https://status.kiwinet.me/api/badge/4/status" },
+      { label: "plex.kiwinet.me",     imgAlt: "plex.kiwinet.me status",     src: "https://status.kiwinet.me/api/badge/5/status" },
+      { label: "minecraft.kiwinet.me",imgAlt: "minecraft.kiwinet.me status",src: "https://status.kiwinet.me/api/badge/6/status" },
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<div class="table-block">
+  <h2 class="block-title">{t.tableTitle}</h2>
+  <div class="table-wrap">
+    <table class="tools-table">
+      <thead>
+        <tr>
+          <th>{t.colRole}</th>
+          <th>{t.colTool}</th>
+          <th>{t.colWhy}</th>
+          <th>{t.colRepo}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {t.rows.map(({ role, tool, why, repo }) => (
+          <tr>
+            <td class="td-role">{role}</td>
+            <td class="td-tool"><span class="tool-name">{tool}</span></td>
+            <td class="td-why">{why}</td>
+            <td class="td-repo"><span class="repo-tag">{repo}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <a
+    href="https://github.com/rookain-kiwi"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="github-link"
+  >
+    {t.githubLabel} →
+  </a>
+</div>
+
+<div class="badges-block">
+  <h2 class="block-title">{t.badgesTitle}</h2>
+  <div class="badges-grid">
+    {t.badges.map(({ label, imgAlt, src }) => (
+      <div class="badge-item">
+        <span class="badge-label">{label}</span>
+        <img src={src} alt={imgAlt} class="badge-img" loading="lazy" height="20" />
+      </div>
+    ))}
+  </div>
+  <p class="badges-note">{t.badgesNote}</p>
+</div>
+
+<style>
+/* ─── Shared ──────────────────────────────────────────────────────────── */
+.table-block,
+.badges-block {
+  margin-bottom: 2.5rem;
+}
+
+.block-title {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ─── Table ───────────────────────────────────────────────────────────── */
+.table-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.tools-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--color-surface);
+}
+
+.tools-table thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tools-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+  color: var(--color-text-primary);
+}
+
+.tools-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.tools-table tbody tr:hover td {
+  background: var(--color-bg);
+}
+
+.td-role {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.td-why {
+  color: var(--color-text-secondary);
+}
+
+.tool-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-primary);
+}
+
+.repo-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: #E6F1FB;
+  color: #0C447C;
+  white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .repo-tag {
+    background: #0C447C;
+    color: #B5D4F4;
+  }
+}
+
+.github-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 13px;
+  color: var(--color-accent);
+  transition: opacity 0.15s;
+}
+
+.github-link:hover {
+  opacity: 0.75;
+}
+
+/* ─── Badges ──────────────────────────────────────────────────────────── */
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 10px 14px;
+}
+
+.badge-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.badge-img {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+.badges-note {
+  margin-top: 0.75rem;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ─── Responsive table ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .td-why,
+  .tools-table thead th:nth-child(3) { display: none; }
+}
+</style>

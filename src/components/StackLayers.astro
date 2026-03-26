@@ -1,0 +1,177 @@
+---
+interface Props {
+  lang?: "fr" | "en";
+}
+
+const { lang = "fr" } = Astro.props;
+
+const content = {
+  fr: {
+    sectionTitle: "Les couches de la stack",
+    layers: [
+      {
+        color:  "blue",
+        label:  "Infrastructure",
+        desc:   "VM Debian GNU/Linux sur ARM64, auto-hébergée. Traefik comme reverse proxy unique, SSL Let's Encrypt automatique via HTTP Challenge. WireGuard pour l'accès sécurisé au réseau local.",
+        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64"],
+        repo:   "kiwinet-infra",
+      },
+      {
+        color:  "green",
+        label:  "CI/CD",
+        desc:   "Pipeline GitHub Actions : build Astro → image Docker multi-plateforme (linux/arm64 via Docker Buildx) → push GHCR → déploiement SSH sur la VM. L'architecture ARM64 est traitée comme une contrainte de build démontrée, pas contournée.",
+        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
+        repo:   "kiwinet-web",
+      },
+      {
+        color:  "purple",
+        label:  "Observabilité",
+        desc:   "Deux niveaux distincts : statut public (Uptime Kuma, badges live, alertes Discord) et observabilité interne (Prometheus, cAdvisor, Node Exporter, Loki, Promtail, Grafana). La séparation externe/interne est un choix délibéré de maturité DevOps.",
+        tags:   ["Uptime Kuma", "Prometheus", "Grafana", "Loki", "cAdvisor"],
+        repo:   "kiwinet-status · kiwinet-monitoring",
+      },
+    ],
+  },
+  en: {
+    sectionTitle: "Stack layers",
+    layers: [
+      {
+        color:  "blue",
+        label:  "Infrastructure",
+        desc:   "Self-hosted VM running Debian GNU/Linux on ARM64. Traefik as the single reverse proxy, automatic Let's Encrypt SSL via HTTP Challenge. WireGuard for secure access to the local network.",
+        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64"],
+        repo:   "kiwinet-infra",
+      },
+      {
+        color:  "green",
+        label:  "CI/CD",
+        desc:   "GitHub Actions pipeline: Astro build → multi-platform Docker image (linux/arm64 via Docker Buildx) → push to GHCR → SSH deployment to the VM. The ARM64 constraint is treated as a demonstrated build competency, not a workaround.",
+        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
+        repo:   "kiwinet-web",
+      },
+      {
+        color:  "purple",
+        label:  "Observability",
+        desc:   "Two distinct layers: public status (Uptime Kuma, live badges, Discord alerts) and internal observability (Prometheus, cAdvisor, Node Exporter, Loki, Promtail, Grafana). The external/internal separation is a deliberate DevOps maturity choice.",
+        tags:   ["Uptime Kuma", "Prometheus", "Grafana", "Loki", "cAdvisor"],
+        repo:   "kiwinet-status · kiwinet-monitoring",
+      },
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<div class="layers-block">
+  <h2 class="layers-section-title">{t.sectionTitle}</h2>
+  <div class="layers-grid">
+    {t.layers.map(({ color, label, desc, tags, repo }) => (
+      <div class={`layer-card layer-card--${color}`}>
+        <div class="layer-card__dot" aria-hidden="true"></div>
+        <div class="layer-card__label">{label}</div>
+        <p class="layer-card__desc">{desc}</p>
+        <div class="layer-card__tags">
+          {tags.map((tag) => (
+            <span class={`layer-tag layer-tag--${color}`}>{tag}</span>
+          ))}
+        </div>
+        <div class="layer-card__repo">{repo}</div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+.layers-block {
+  margin-bottom: 2.5rem;
+}
+
+.layers-section-title {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.layers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.layer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.125rem 1.25rem;
+}
+
+.layer-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.layer-card--blue  .layer-card__dot { background: #378ADD; }
+.layer-card--green .layer-card__dot { background: #1D9E75; }
+.layer-card--purple .layer-card__dot { background: #7F77DD; }
+
+.layer-card__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.layer-card__desc {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.layer-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.layer-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.layer-tag--blue   { background: #E6F1FB; color: #0C447C; }
+.layer-tag--green  { background: #EAF3DE; color: #27500A; }
+.layer-tag--purple { background: #EEEDFE; color: #3C3489; }
+
+@media (prefers-color-scheme: dark) {
+  .layer-tag--blue   { background: #0C447C; color: #B5D4F4; }
+  .layer-tag--green  { background: #27500A; color: #C0DD97; }
+  .layer-tag--purple { background: #3C3489; color: #CECBF6; }
+}
+
+.layer-card__repo {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .layers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
