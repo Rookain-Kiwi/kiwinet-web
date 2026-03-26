@@ -7,7 +7,7 @@ const lang = "fr";
 ---
 
 <BaseLayout
-  title="Contact — kiwinet.me"
+  title="Contact"
   description="Me contacter pour des missions DevOps, des collaborations ou rejoindre la communauté kiwinet.me"
   lang={lang}
 >
@@ -19,8 +19,8 @@ const lang = "fr";
         <h1 class="contact-title">Contact</h1>
         <p class="contact-intro">
           Disponible pour des missions freelance, des opportunités DevOps, ou simplement
-          discuter infrastructure et open source. N'hésite pas à me contacter,
-          je réponds sous 24–48h.
+          discuter infrastructure et open source. N'hésitez pas à me contacter,
+          je réponds sous 24 à 48h.
         </p>
         <span class="badge badge--green">
           <span class="badge__dot" aria-hidden="true"></span>
@@ -75,7 +75,7 @@ const lang = "fr";
 
           <!-- LinkedIn -->
           <a
-            href="https://www.linkedin.com/in/loïc-kergoat-51150131a"
+            href="https://linkedin.com/in/loic-kergoat"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-card"
@@ -94,7 +94,13 @@ const lang = "fr";
           </a>
 
           <!-- Discord perso -->
-          <div class="contact-card contact-card--static">
+          <a
+            href="https://discord.com/users/485563988114145300"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="Profil Discord"
+          >
             <div class="card-icon card-icon--purple">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path d="M16.93 4.03A15.85 15.85 0 0013 3c-.17.31-.37.73-.51 1.06a14.67 14.67 0 00-4.98 0A11.3 11.3 0 007 3a15.9 15.9 0 00-3.94 1.04C.43 7.38-.26 10.65.08 13.87c1.68 1.24 3.32 2 4.93 2.49.4-.54.75-1.12 1.05-1.73-.57-.22-1.12-.49-1.64-.8.14-.1.27-.2.4-.31a11.3 11.3 0 009.76 0c.13.11.26.21.4.31-.52.32-1.08.59-1.65.81.3.61.65 1.19 1.05 1.73 1.62-.49 3.26-1.25 4.94-2.5.41-3.78-.7-7.05-2.9-9.84zM6.68 11.9c-.96 0-1.74-.88-1.74-1.96s.77-1.96 1.74-1.96c.97 0 1.75.88 1.75 1.96s-.78 1.96-1.75 1.96zm6.64 0c-.97 0-1.74-.88-1.74-1.96s.77-1.96 1.74-1.96c.97 0 1.75.88 1.75 1.96s-.78 1.96-1.75 1.96z"/>
@@ -104,7 +110,8 @@ const lang = "fr";
               <span class="card-label">Discord</span>
               <span class="card-sub">@Rookain</span>
             </div>
-          </div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
 
         </div>
 
@@ -186,13 +193,9 @@ const lang = "fr";
   color: inherit;
 }
 
-.contact-card:not(.contact-card--static):hover {
+.contact-card:hover {
   border-color: var(--color-border-md);
   box-shadow: var(--shadow-card);
-}
-
-.contact-card--static {
-  cursor: default;
 }
 
 .card-icon {
