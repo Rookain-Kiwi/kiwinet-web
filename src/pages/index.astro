@@ -1,31 +1,20 @@
 ---
-// Mise en page et composants principaux de la page d'accueil
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar     from "../components/Navbar.astro";
 import Hero       from "../components/Hero.astro";
-import Cards      from "../components/Cards.astro";
 import Footer     from "../components/Footer.astro";
 
-// Langue par défaut du site
 const lang = "fr";
 ---
 
-<!-- Page d'accueil : structure complète avec en-tête, contenu principal et pied de page -->
 <BaseLayout
-  title="kiwinet.me"
-  description="Self-hosted website / Open source DevOps infrastructure"
+  title="kiwinet.me — DevOps, Gaming and... Kiwis"
+  description="Infrastructure self-hosted open source — reverse proxy, CI/CD, monitoring, gaming. Propulsé par kiwinet.me."
   lang={lang}
 >
-  <!-- Barre de navigation : currentPath indique la page active pour le style actif -->
   <Navbar lang={lang} currentPath="/" />
-
   <main>
-    <!-- Section Hero : accroche principale visible en haut de page -->
-    <Hero  lang={lang} />
-
-    <!-- Grille de cartes : présente les projets ou fonctionnalités clés -->
-    <Cards lang={lang} />
+    <Hero lang={lang} />
   </main>
-
   <Footer lang={lang} />
 </BaseLayout>

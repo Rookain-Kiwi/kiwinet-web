@@ -6,100 +6,94 @@ interface Props {
 
 const { lang = "fr", currentPath = "/" } = Astro.props;
 
-const links = {
-  fr: [
-    { href: "/about",    label: "À propos" },
-    { href: "/projects", label: "Projets"  },
-    { href: "/stack",    label: "Stack"    },
-    { href: "/contact",  label: "Contact"  },
-  ],
-  en: [
-    { href: "/en/about",    label: "About"    },
-    { href: "/en/projects", label: "Projects" },
-    { href: "/en/stack",    label: "Stack"    },
-    { href: "/en/contact",  label: "Contact"  },
-  ],
-};
+const navFr = [
+  { href: "/about",    label: "À propos" },
+  { href: "/projects", label: "Projets"  },
+  { href: "/contact",  label: "Contact"  },
+];
 
-const altLang    = lang === "fr" ? "en" : "fr";
-const altLangHref = lang === "fr"
-  ? currentPath.replace(/^\//, "/en/")
-  : currentPath.replace(/^\/en/, "") || "/";
+const navEn = [
+  { href: "/en/about",    label: "About"    },
+  { href: "/en/projects", label: "Projects" },
+  { href: "/en/contact",  label: "Contact"  },
+];
 
-const nav = links[lang];
+const links = lang === "fr" ? navFr : navEn;
 ---
 
-<header class="navbar">
+<nav class="navbar">
   <div class="container navbar__inner">
-    <a href={lang === "fr" ? "/" : "/en"} class="navbar__logo">
-      Loïc Kergoat
-      <span class="navbar__alias">Rookain</span>
+    <a href="/" class="navbar__logo" aria-label="kiwinet.me — accueil">
+      kiwinet.me
     </a>
 
-    <nav class="navbar__nav" aria-label="Navigation principale">
-      <ul class="navbar__links">
-        {nav.map(({ href, label }) => (
-          <li>
-            <a
-              href={href}
-              class={`navbar__link${currentPath === href ? " navbar__link--active" : ""}`}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <ul class="navbar__links" role="list">
+      {links.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={["navbar__link", { "navbar__link--active": currentPath === href }]}
+            aria-current={currentPath === href ? "page" : undefined}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
 
-    <a href={altLangHref} class="navbar__lang" aria-label={`Switch to ${altLang.toUpperCase()}`}>
-      {altLang.toUpperCase()}
+    <a
+      href={lang === "fr" ? "/en" : "/"}
+      class="navbar__lang"
+      aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
+    >
+      {lang === "fr" ? "EN" : "FR"}
     </a>
   </div>
-</header>
+</nav>
 
 <style>
 .navbar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
 }
 
 .navbar__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 56px;
   gap: 24px;
+  height: 52px;
 }
 
 .navbar__logo {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-primary);
-  white-space: nowrap;
+  text-decoration: none;
+  letter-spacing: -0.01em;
   flex-shrink: 0;
+  transition: opacity 0.15s;
 }
 
-.navbar__alias {
-  color: var(--color-text-muted);
-  font-weight: 400;
-  margin-left: 4px;
-}
-
-.navbar__nav { flex: 1; display: flex; justify-content: center; }
+.navbar__logo:hover { opacity: 0.75; }
 
 .navbar__links {
   display: flex;
   gap: 4px;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
 }
 
 .navbar__link {
   font-size: 13px;
   color: var(--color-text-secondary);
-  padding: 6px 12px;
+  text-decoration: none;
+  padding: 5px 10px;
   border-radius: var(--radius-sm);
   transition: color 0.15s, background 0.15s;
 }
@@ -107,7 +101,7 @@ const nav = links[lang];
 .navbar__link:hover,
 .navbar__link--active {
   color: var(--color-text-primary);
-  background: var(--color-bg);
+  background: var(--color-bg-hover, rgba(255,255,255,0.06));
 }
 
 .navbar__lang {
@@ -116,7 +110,8 @@ const nav = links[lang];
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: 4px 10px;
+  padding: 4px 9px;
+  text-decoration: none;
   transition: color 0.15s, border-color 0.15s;
   flex-shrink: 0;
 }
@@ -124,11 +119,5 @@ const nav = links[lang];
 .navbar__lang:hover {
   color: var(--color-text-primary);
   border-color: var(--color-border-md);
-}
-
-@media (max-width: 600px) {
-  .navbar__links { gap: 0; }
-  .navbar__link  { padding: 6px 8px; font-size: 12px; }
-  .navbar__alias { display: none; }
 }
 </style>

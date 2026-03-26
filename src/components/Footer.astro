@@ -8,8 +8,8 @@ const { lang = "fr" } = Astro.props;
 const year = new Date().getFullYear();
 
 const labels = {
-  fr: { uptime: "Tous les services opérationnels", copy: "Loïc Kergoat" },
-  en: { uptime: "All services operational",        copy: "Loïc Kergoat" },
+  fr: { uptime: "Tous les services opérationnels" },
+  en: { uptime: "All services operational" },
 };
 
 const t = labels[lang];
@@ -17,10 +17,10 @@ const t = labels[lang];
 
 <footer class="footer">
   <div class="container footer__inner">
-    <span class="footer__copy">© {year} {t.copy}</span>
+    <span class="footer__copy">© {year} powered by kiwinet.me</span>
 
     <a
-      href="https://status.kiwinet.me/status/kiwinet"
+      href="https://status.kiwinet.me"
       target="_blank"
       rel="noopener noreferrer"
       class="badge badge--green footer__uptime"
