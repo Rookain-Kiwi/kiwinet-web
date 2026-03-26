@@ -1,0 +1,546 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="À propos — Loïc Kergoat" description="Parcours, compétences et présentation de Loïc Kergoat, administrateur système DevOps.">
+  <Navbar currentPath="/about" />
+
+  <main class="about-main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-avatars">
+        <img src="/photo.png" alt="Photo de Loïc Kergoat" class="avatar avatar-photo" />
+        <img src="/avatar.gif" alt="Avatar animé" class="avatar avatar-gif" />
+      </div>
+      <div class="hero-content">
+        <h1>Loïc Kergoat</h1>
+        <p class="hero-role">Administrateur système DevOps, Montoir-de-Bretagne</p>
+        <div class="badge-row">
+          <span class="badge badge-teal">DevOps</span>
+          <span class="badge badge-purple">Self-hosting</span>
+          <span class="badge badge-amber">Open source</span>
+        </div>
+        <p class="hero-bio">
+          Pas le profil le plus linéaire du marché, mais probablement l'un des plus adaptables.
+          Après la Marine Nationale, le développement BI et neuf ans de qualité aéronautique,
+          je reviens à ce qui m'anime : construire, automatiser, administrer.
+          Docker, Terraform, CI/CD, Linux : les outils changent, la rigueur reste.
+        </p>
+        <a href="/cv.pdf" class="cv-link" download>Télécharger le CV</a>
+      </div>
+    </section>
+
+    <!-- Pitch vidéo -->
+    <section class="section">
+      <p class="section-label">Pitch</p>
+      <div class="video-wrapper">
+        <video controls preload="metadata" poster="">
+          <source src="/pitch.mp4" type="video/mp4" />
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+      </div>
+    </section>
+
+    <!-- Parcours -->
+    <section class="section">
+      <p class="section-label">Parcours</p>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot current"></div>
+          <p class="tl-date">déc. 2025 à aujourd'hui</p>
+          <p class="tl-title">Bachelor Administrateur système DevOps</p>
+          <p class="tl-company">STUDI, formation à distance, RNCP niveau 6</p>
+          <ul class="tl-missions">
+            <li>Automatisation de déploiement d'infrastructure cloud</li>
+            <li>Déploiement continu d'applications (CI/CD)</li>
+            <li>Supervision et observabilité des services déployés</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">août 2018 à sept. 2024</p>
+          <p class="tl-title">Assurance qualité</p>
+          <p class="tl-company">Airbus, Montoir-de-Bretagne</p>
+          <ul class="tl-missions">
+            <li>Interface qualité pour les lignes d'assemblage A320, tous standards</li>
+            <li>Traitement de la non-qualité post-usine</li>
+            <li>Support informatique interne</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">juin 2015 à août 2018</p>
+          <p class="tl-title">Inspecteur contrôle qualité</p>
+          <p class="tl-company">Airbus, Toulouse</p>
+          <ul class="tl-missions">
+            <li>Gestion end-to-end de la qualité des mâts moteurs A350-900 et A350-1000</li>
+            <li>Mise en place de confinement, inspection finale produit</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">janv. 2013 à juin 2015</p>
+          <p class="tl-title">Développeur BI</p>
+          <p class="tl-company">Airbus IFR Skeyes, Colomiers</p>
+          <ul class="tl-missions">
+            <li>Développement et maintenance de la solution BI IBIS en Java</li>
+            <li>Exploitation de la base AMASIS pour la gestion du vieillissement des pièces (SQL, AS400)</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">2003 à 2013</p>
+          <p class="tl-title">Technicien programmeur et opérateur radio</p>
+          <p class="tl-company">Marine Nationale, Cyberdyne</p>
+          <ul class="tl-missions">
+            <li>Développement de logiciels de cartographie en Python et d'outils de comptabilité en WinDEV</li>
+            <li>Administration de parc informatique et support utilisateurs</li>
+            <li>Liaisons de transmission radio, maintenance des équipements radioélectriques</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="section">
+      <p class="section-label">Compétences</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <p class="skill-cat">Infra et conteneurs</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Traefik</span>
+            <span class="skill-tag">Debian/Linux</span>
+            <span class="skill-tag">UFW</span>
+            <span class="skill-tag">WireGuard</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">CI/CD et versionnement</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">GHCR</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">SSH</span>
+            <span class="skill-tag">ARM64</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Observabilité</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Loki</span>
+            <span class="skill-tag">Uptime Kuma</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Développement</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Astro</span>
+            <span class="skill-tag">Nginx</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation initiale -->
+    <section class="section">
+      <p class="section-label">Formation initiale</p>
+      <div class="formations">
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">Certificat de Conception Analyse Programmation SI</p>
+            <span class="formation-year">2010</span>
+          </div>
+          <p class="formation-sub">ETRS Rennes</p>
+        </div>
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">Brevet d'aptitude technique, systèmes d'information et télécommunications</p>
+            <span class="formation-year">2006</span>
+          </div>
+          <p class="formation-sub">CIN Brest</p>
+        </div>
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">BTS Informatique de gestion, développement logiciel</p>
+            <span class="formation-year">2003</span>
+          </div>
+          <p class="formation-sub">Saint-Louis Châteaulin</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Centres d'intérêt -->
+    <section class="section">
+      <p class="section-label">Centres d'intérêt</p>
+      <div class="hobbies-row">
+        <span class="hobby">Informatique et self-hosting</span>
+        <span class="hobby">Musique</span>
+        <span class="hobby">Dessin</span>
+        <span class="hobby">Gaming</span>
+        <span class="hobby">Bricolage</span>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <p class="cta-text">Disponible pour des opportunités DevOps ou des collaborations techniques.</p>
+      <a href="/contact" class="cta-btn">Me contacter</a>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .hero-avatars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+  }
+
+  .hero-role {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .badge-teal  { background: #E1F5EE; color: #085041; }
+  .badge-purple{ background: #EEEDFE; color: #3C3489; }
+  .badge-amber { background: #FAEEDA; color: #633806; }
+
+  .hero-bio {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .cv-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 5px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cv-link:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  /* Vidéo */
+  .video-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 1.75rem 1.5rem;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+  }
+
+  .tl-dot.current {
+    border-color: #1D9E75;
+    background: #E1F5EE;
+  }
+
+  .tl-date {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    margin-bottom: 3px;
+  }
+
+  .tl-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--color-text);
+  }
+
+  .tl-company {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-missions {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .tl-missions li {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .tl-missions li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-border);
+  }
+
+  /* Compétences */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .skill-card {
+    background: var(--color-surface);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+  }
+
+  .skill-cat {
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    color: var(--color-muted);
+  }
+
+  /* Formations */
+  .formations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .formation-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+
+  .formation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .formation-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .formation-year {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .formation-sub {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+  }
+
+  /* Hobbies */
+  .hobbies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hobby {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 6px 14px;
+  }
+
+  /* CTA */
+  .cta {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-text {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .cta-btn {
+    font-size: 0.82rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 6px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 560px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-avatars {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
