@@ -34,6 +34,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       # 5. Builder et pousser l'image ARM64
+      # Deux tags poussés : latest (commodité) et SHA du commit (rollback immuable)
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -42,7 +43,6 @@ jobs:
           push: true
           tags: |
             ghcr.io/rookain-kiwi/kiwinet-web:latest
-            # Tag immuable par commit SHA — permet le rollback vers n'importe quelle version
             ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}
 
       # 6. Déployer sur la VM via SSH
