@@ -42,7 +42,8 @@ jobs:
           push: true
           tags: |
             ghcr.io/rookain-kiwi/kiwinet-web:latest
-            ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}   # Tag immuable par commit pour rollback
+            # Tag immuable par commit SHA — permet le rollback vers n'importe quelle version
+            ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}
 
       # 6. Déployer sur la VM via SSH
       - name: Deploy to VM
