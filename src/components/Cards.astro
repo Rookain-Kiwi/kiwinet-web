@@ -1,4 +1,10 @@
 ---
+/**
+ * Cards.astro
+ * Rôle : Grille de 4 cartes de navigation (À propos, Projets, Stack, Contact) et badges d'état de l'infrastructure.
+ * Reçoit : lang?: "fr" | "en" — langue d'affichage (défaut : "fr")
+ * Émet   : aucun
+ */
 interface Props {
   lang?: "fr" | "en";
 }
@@ -166,13 +172,17 @@ const tags  = badges[lang];
 
 .card:hover .card__arrow { transform: translateX(3px); }
 
-/* Couleurs des points par card */
+/* ─────────────────────────────────────────────────────────────────────────────
+   COULEURS DES POINTS PAR CARTE
+   ───────────────────────────────────────────────────────────────────────────── */
 .card--purple .card__dot { background: #7F77DD; }
 .card--teal   .card__dot { background: #1D9E75; }
 .card--amber  .card__dot { background: #BA7517; }
 .card--coral  .card__dot { background: #D85A30; }
 
-/* Badges */
+/* ─────────────────────────────────────────────────────────────────────────────
+   BADGES D'ÉTAT DE L'INFRASTRUCTURE
+   ───────────────────────────────────────────────────────────────────────────── */
 .badges-row {
   display: flex;
   flex-wrap: wrap;

@@ -1,4 +1,11 @@
 ---
+/**
+ * Navbar.astro
+ * Rôle : Barre de navigation principale — liens de section, lien actif mis en évidence, bouton de changement de langue.
+ * Reçoit : lang?: "fr" | "en" — langue des liens de navigation (défaut : "fr")
+ *          currentPath?: string — chemin courant pour surligner le lien actif (défaut : "/")
+ * Émet   : aucun
+ */
 interface Props {
   lang?: "fr" | "en";
   currentPath?: string;
@@ -60,7 +67,7 @@ const links = lang === "fr" ? navFr : navEn;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);   /* Effet de flou sur le contenu défilant derrière la barre */
 }
 
 .navbar__inner {

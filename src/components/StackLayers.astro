@@ -1,4 +1,11 @@
 ---
+/**
+ * StackLayers.astro
+ * Rôle : Présente les 3 couches de la stack (Infrastructure, CI/CD, Observabilité) sous forme de cartes colorées
+ *        avec description, tags technologiques et référence au repo associé.
+ * Reçoit : lang?: "fr" | "en" — langue d'affichage (défaut : "fr")
+ * Émet   : aucun
+ */
 interface Props {
   lang?: "fr" | "en";
 }
@@ -157,6 +164,7 @@ const t = content[lang];
 .layer-tag--purple { background: #EEEDFE; color: #3C3489; }
 
 @media (prefers-color-scheme: dark) {
+  /* Inversion des couleurs de tag en mode sombre pour maintenir le contraste */
   .layer-tag--blue   { background: #0C447C; color: #B5D4F4; }
   .layer-tag--green  { background: #27500A; color: #C0DD97; }
   .layer-tag--purple { background: #3C3489; color: #CECBF6; }

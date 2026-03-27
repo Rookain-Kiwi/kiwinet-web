@@ -1,3 +1,6 @@
+# deploy.yml : Pipeline CI/CD — build image Docker ARM64 et déploiement SSH sur la VM
+# Déclenché à chaque push sur main. Build multi-plateforme via Docker Buildx (linux/arm64).
+
 name: Build & Deploy
 
 on:
@@ -39,7 +42,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/rookain-kiwi/kiwinet-web:latest
-            ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}
+            ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}   # Tag immuable par commit pour rollback
 
       # 6. Déployer sur la VM via SSH
       - name: Deploy to VM

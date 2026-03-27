@@ -1,4 +1,11 @@
 ---
+/**
+ * StackArchDiagram.astro
+ * Rôle : Affiche deux diagrammes ASCII de l'architecture réseau — vue macro (flux Internet → services)
+ *        et vue détaillée (ports, protocoles, services hors Docker).
+ * Reçoit : lang?: "fr" | "en" — langue d'affichage (défaut : "fr")
+ * Émet   : aucun
+ */
 interface Props {
   lang?: "fr" | "en";
 }
