@@ -1,4 +1,4 @@
-# docker-compose.yml : Service web kiwinet.me — conteneur Nginx servi derrière Traefik
+# docker-compose.yml : Service web kiwinet.me — conteneur Nginx servi derrière Traefik.
 # Utilisé en production sur VM ARM64. Image buildée et poussée par le CI/CD GitHub Actions.
 
 services:
