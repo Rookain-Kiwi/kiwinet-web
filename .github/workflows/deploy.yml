@@ -53,6 +53,6 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd /opt/traefik
+            cd /opt/kiwinet-infra
             docker compose pull kiwinet-web
             docker compose up -d kiwinet-web
