@@ -1,23 +1,28 @@
-# docker-compose.yml : Service web kiwinet.me — conteneur Nginx servi derrière Traefik.
-# Utilisé en production sur VM ARM64. Image buildée et poussée par le CI/CD GitHub Actions.
+# docker-compose.yml : Site principal kiwinet.me
+# Projet  : kiwinet.me
+# VM      : Debian 13.3 ARM AArch64 (Freebox Delta)
+# Image   : ghcr.io/rookain-kiwi/kiwinet-web (Astro + Nginx Alpine)
+# CI/CD   : GitHub Actions → GHCR → déploiement SSH automatique
 
 services:
+
   website:
     image: ghcr.io/rookain-kiwi/kiwinet-web:latest
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: kiwinet-web
     restart: unless-stopped
     networks:
-      - proxy   # Réseau Docker partagé avec Traefik pour le routage interne
+      - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`kiwinet.me`)"
-      - "traefik.http.routers.website.entrypoints=websecure"   # HTTPS uniquement — port 443
-      - "traefik.http.routers.website.tls.certresolver=letsencrypt"   # SSL auto via Let's Encrypt
+      - "traefik.http.routers.website.rule=Host(`kiwinet.me`) || Host(`www.kiwinet.me`)"
+      - "traefik.http.routers.website.entrypoints=websecure"
+      - "traefik.http.routers.website.tls.certresolver=letsencrypt"
       - "traefik.http.services.website.loadbalancer.server.port=80"
-      - "traefik.http.routers.website.middlewares=secure-headers@file"   # Headers de sécurité définis dans dynamic.yml
+      - "traefik.http.routers.website.middlewares=secure-headers@file"
 
 networks:
   proxy:
-    external: true   # Réseau créé et géré par la stack Traefik — ne pas recréer ici
+    external: true
