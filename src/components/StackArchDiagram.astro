@@ -25,6 +25,7 @@ const content = {
                     ├── status.kiwinet.me    → Uptime Kuma
                     ├── grafana.kiwinet.me   → Grafana
                     ├── plex.kiwinet.me      → Plex Media Server
+                    ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
   └── minecraft.kiwinet.me:25565 (TCP direct, hors Traefik)`,
     detailArch: `Internet
@@ -33,6 +34,7 @@ const content = {
   │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
   │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
   │                                        ├── plex.kiwinet.me        → Plex Media Server (hors Docker)
+  │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
   │                                        ├── status.kiwinet.me      → Container uptime-kuma
   │                                        └── grafana.kiwinet.me     → Container grafana
   │
@@ -52,6 +54,7 @@ const content = {
                     ├── status.kiwinet.me    → Uptime Kuma
                     ├── grafana.kiwinet.me   → Grafana
                     ├── plex.kiwinet.me      → Plex Media Server
+                    ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
   └── minecraft.kiwinet.me:25565 (direct TCP, outside Traefik)`,
     detailArch: `Internet
@@ -60,6 +63,7 @@ const content = {
   │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
   │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
   │                                        ├── plex.kiwinet.me        → Plex Media Server (outside Docker)
+  │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
   │                                        ├── status.kiwinet.me      → Container uptime-kuma
   │                                        └── grafana.kiwinet.me     → Container grafana
   │

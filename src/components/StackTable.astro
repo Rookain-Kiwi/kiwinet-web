@@ -25,6 +25,7 @@ const content = {
     rows: [
       { role: "Reverse proxy",   tool: "Traefik v3",                          why: "Natif Docker, SSL auto, standard conteneurs",    repo: "kiwinet-infra"       },
       { role: "SSL",             tool: "Let's Encrypt",                        why: "Gratuit, automatique, reconnu universellement",  repo: "kiwinet-infra"       },
+      { role: "VPN",             tool: "WireGuard",                            why: "Zéro exposition, clé par appareil",              repo: "kiwinet-infra"       },
       { role: "Framework front", tool: "Astro",                                why: "Statique, léger, image Docker ~15 Mo",           repo: "kiwinet-web"         },
       { role: "Serveur fichiers",tool: "Nginx Alpine",                         why: "Minimaliste, multi-stage build",                 repo: "kiwinet-web"         },
       { role: "Registry",        tool: "GHCR",                                 why: "Cohérence écosystème GitHub",                    repo: "kiwinet-web"         },
@@ -33,15 +34,15 @@ const content = {
       { role: "Métriques",       tool: "Prometheus + cAdvisor + Node Exporter",why: "Standard industrie",                             repo: "kiwinet-monitoring"  },
       { role: "Logs",            tool: "Loki + Promtail",                      why: "Cohérence Grafana Labs",                         repo: "kiwinet-monitoring"  },
       { role: "Dashboards",      tool: "Grafana",                              why: "Visualisation unifiée",                          repo: "kiwinet-monitoring"  },
-      { role: "VPN",             tool: "WireGuard",                            why: "Zéro exposition, clé par appareil",              repo: "kiwinet-infra"       },
     ],
     badges: [
-      { label: "kiwinet.me",          imgAlt: "statut kiwinet.me",          src: "https://status.kiwinet.me/api/badge/1/status" },
+      { label: "Kiwinet.me",             imgAlt: "statut kiwinet.me",          src: "https://status.kiwinet.me/api/badge/1/status" },
       { label: "traefik.kiwinet.me",  imgAlt: "statut traefik.kiwinet.me",  src: "https://status.kiwinet.me/api/badge/2/status" },
       { label: "status.kiwinet.me",   imgAlt: "statut status.kiwinet.me",   src: "https://status.kiwinet.me/api/badge/3/status" },
       { label: "grafana.kiwinet.me",  imgAlt: "statut grafana.kiwinet.me",  src: "https://status.kiwinet.me/api/badge/4/status" },
       { label: "plex.kiwinet.me",     imgAlt: "statut plex.kiwinet.me",     src: "https://status.kiwinet.me/api/badge/5/status" },
       { label: "minecraft.kiwinet.me",imgAlt: "statut minecraft.kiwinet.me",src: "https://status.kiwinet.me/api/badge/6/status" },
+      { label: "hub.kiwinet.me",      imgAlt: "statut hub.kiwinet.me",      src: "https://status.kiwinet.me/api/badge/8/status" },
     ],
   },
   en: {
@@ -56,6 +57,7 @@ const content = {
     rows: [
       { role: "Reverse proxy",   tool: "Traefik v3",                          why: "Native Docker, auto SSL, container standard",    repo: "kiwinet-infra"       },
       { role: "SSL",             tool: "Let's Encrypt",                        why: "Free, automatic, universally trusted",           repo: "kiwinet-infra"       },
+      { role: "VPN",             tool: "WireGuard",                            why: "Zero exposure, one key per device",              repo: "kiwinet-infra"       },
       { role: "Frontend",        tool: "Astro",                                why: "Static output, lightweight, ~15 MB Docker image",repo: "kiwinet-web"         },
       { role: "File server",     tool: "Nginx Alpine",                         why: "Minimal, multi-stage build",                     repo: "kiwinet-web"         },
       { role: "Registry",        tool: "GHCR",                                 why: "GitHub ecosystem coherence",                     repo: "kiwinet-web"         },
@@ -64,15 +66,15 @@ const content = {
       { role: "Metrics",         tool: "Prometheus + cAdvisor + Node Exporter",why: "Industry standard",                              repo: "kiwinet-monitoring"  },
       { role: "Logs",            tool: "Loki + Promtail",                      why: "Grafana Labs coherence",                         repo: "kiwinet-monitoring"  },
       { role: "Dashboards",      tool: "Grafana",                              why: "Unified visualisation",                          repo: "kiwinet-monitoring"  },
-      { role: "VPN",             tool: "WireGuard",                            why: "Zero exposure, one key per device",              repo: "kiwinet-infra"       },
     ],
     badges: [
-      { label: "kiwinet.me",          imgAlt: "kiwinet.me status",          src: "https://status.kiwinet.me/api/badge/1/status" },
+      { label: "Kiwinet",             imgAlt: "kiwinet.me status",          src: "https://status.kiwinet.me/api/badge/1/status" },
       { label: "traefik.kiwinet.me",  imgAlt: "traefik.kiwinet.me status",  src: "https://status.kiwinet.me/api/badge/2/status" },
       { label: "status.kiwinet.me",   imgAlt: "status.kiwinet.me status",   src: "https://status.kiwinet.me/api/badge/3/status" },
       { label: "grafana.kiwinet.me",  imgAlt: "grafana.kiwinet.me status",  src: "https://status.kiwinet.me/api/badge/4/status" },
       { label: "plex.kiwinet.me",     imgAlt: "plex.kiwinet.me status",     src: "https://status.kiwinet.me/api/badge/5/status" },
       { label: "minecraft.kiwinet.me",imgAlt: "minecraft.kiwinet.me status",src: "https://status.kiwinet.me/api/badge/6/status" },
+      { label: "hub.kiwinet.me",      imgAlt: "hub.kiwinet.me status",      src: "https://status.kiwinet.me/api/badge/BADGE_ID_HUB/status" },
     ],
   },
 };

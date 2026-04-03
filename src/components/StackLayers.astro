@@ -26,7 +26,7 @@ const content = {
       {
         color:  "green",
         label:  "CI/CD",
-        desc:   "Pipeline GitHub Actions : build Astro → image Docker multi-plateforme (linux/arm64 via Docker Buildx) → push GHCR → déploiement SSH sur la VM. L'architecture ARM64 est traitée comme une contrainte de build démontrée, pas contournée.",
+        desc:   "Pipeline GitHub Actions : build Astro → image Docker multi-plateforme (linux/arm64 via Docker Buildx) → push GHCR → git pull sur la VM → déploiement Docker Compose. L'architecture ARM64 est traitée comme une contrainte de build démontrée, pas contournée.",
         tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
         repo:   "kiwinet-web",
       },
@@ -52,7 +52,7 @@ const content = {
       {
         color:  "green",
         label:  "CI/CD",
-        desc:   "GitHub Actions pipeline: Astro build → multi-platform Docker image (linux/arm64 via Docker Buildx) → push to GHCR → SSH deployment to the VM. The ARM64 constraint is treated as a demonstrated build competency, not a workaround.",
+        desc:   "GitHub Actions pipeline: Astro build → multi-platform Docker image (linux/arm64 via Docker Buildx) → push to GHCR → git pull on the VM → Docker Compose deployment. The ARM64 constraint is treated as a demonstrated build competency, not a workaround.",
         tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
         repo:   "kiwinet-web",
       },
