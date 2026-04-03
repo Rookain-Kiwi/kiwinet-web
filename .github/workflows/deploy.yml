@@ -47,12 +47,11 @@ jobs:
 
       # 6. Déployer sur la VM via SSH
       - name: Deploy to VM
-        uses: appleboy/ssh-action@v0.1.7
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
-          debug: true
           script: |
             cd /opt/kiwinet-infra
             docker compose pull kiwinet-web
