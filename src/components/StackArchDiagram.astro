@@ -16,7 +16,7 @@ const content = {
   fr: {
     macroTitle:    "Vue d'ensemble",
     detailTitle:   "Architecture détaillée",
-    macroNote:     "Traefik est le point d'entrée unique de la VM : il gère le routage, le SSL automatique et l'isolation des services. Minecraft, protocole TCP brut, est le seul service à ne pas transiter par Traefik.",
+    macroNote:     "Traefik est le point d'entrée unique de la VM : il gère le routage, le SSL automatique et l'isolation des services. Minecraft transite par Traefik en mode TCP passthrough — le trafic est routé sans déchiffrement TLS.",
     detailNote:    "L'accès à l'interface d'administration de la Freebox ne passe pas par le réseau public. Il transite exclusivement par un tunnel WireGuard — zéro surface d'attaque, authentification par clé, clé distincte par appareil.",
     macroArch: `Internet
   └── freebox.kiwinet.me (point d'entrée)
@@ -27,7 +27,7 @@ const content = {
                     ├── plex.kiwinet.me      → Container plex (Plex Media Server)
                     ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
-  └── minecraft.kiwinet.me:25565 (TCP direct, hors Traefik)`,
+  └── minecraft.kiwinet.me:25565 (TCP passthrough Traefik)`,
     detailArch: `Internet
   │
   ├── :80/:443  → freebox.kiwinet.me → Traefik
@@ -45,7 +45,7 @@ const content = {
   en: {
     macroTitle:    "Overview",
     detailTitle:   "Detailed architecture",
-    macroNote:     "Traefik is the single entry point of the VM: it handles routing, automatic SSL and service isolation. Minecraft, a raw TCP protocol, is the only service that does not go through Traefik.",
+    macroNote:     "Traefik is the single entry point of the VM: it handles routing, automatic SSL and service isolation. Minecraft goes through Traefik in TCP passthrough mode — traffic is routed without TLS termination.",
     detailNote:    "Access to the Freebox admin interface is not publicly exposed. It goes exclusively through a WireGuard tunnel — zero attack surface, key-based authentication, one key per device.",
     macroArch: `Internet
   └── freebox.kiwinet.me (entry point)
@@ -56,7 +56,7 @@ const content = {
                     ├── plex.kiwinet.me      → Container plex (Plex Media Server)
                     ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
-  └── minecraft.kiwinet.me:25565 (direct TCP, outside Traefik)`,
+  └── minecraft.kiwinet.me:25565 (TCP passthrough Traefik)`,
     detailArch: `Internet
   │
   ├── :80/:443  → freebox.kiwinet.me → Traefik
