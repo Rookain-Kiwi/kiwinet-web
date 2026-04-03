@@ -1,7 +1,7 @@
 ---
 /**
  * projects.astro
- * Rôle : Page Projets — liste les projets construits et maintenus (kiwinet.me infra, ECF Infoline, serveur Minecraft)
+ * Rôle : Page Projets — liste les projets construits et maintenus (Kiwinet infra, ECF Infoline, serveur Minecraft)
  *        avec statut, description, tags technologiques et liens.
  * Reçoit : aucune prop (page statique)
  * Émet   : aucun
@@ -17,13 +17,13 @@ const projects = [
     id: "kiwinet",
     icon: "grid",
     iconBg: "#EEEDFE",
-    title: "kiwinet.me : Infrastructure self-hosted",
+    title: "Kiwinet : Infrastructure self-hosted",
     subtitle: "VM Debian · ARM AArch64 · Freebox Delta",
     status: "En production",
     statusClass: "status-live",
     desc: "Ce site et l'infrastructure qui le fait tourner sont eux-mêmes un projet. De la VM ARM sous Debian à la stack monitoring, tout est auto-hébergé, versionné et déployé via une chaîne DevOps complète.",
     tags: ["Traefik", "Docker", "GitHub Actions", "Astro", "Nginx", "Prometheus", "Grafana", "Loki", "ARM AArch64"],
-    services: ["kiwinet.me", "status.kiwinet.me", "grafana.kiwinet.me", "plex.kiwinet.me"],
+    services: ["Kiwinet", "status.kiwinet.me", "grafana.kiwinet.me", "plex.kiwinet.me"],
     link: { label: "Voir la stack", href: "/stack" },
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     id: "minecraft",
     icon: "server",
     iconBg: "#E1F5EE",
-    title: "Serveur Minecraft kiwinet.me",
+    title: "Serveur Minecraft Kiwinet",
     subtitle: "Vanilla · Accès sur demande",
     status: "Sur demande",
     statusClass: "status-open",
@@ -59,7 +59,7 @@ const projects = [
 
 <BaseLayout
   title="Projets — Loïc Kergoat"
-  description="Projets construits, hébergés et maintenus par Loïc Kergoat : kiwinet.me, ECF Infoline, serveur Minecraft."
+  description="Projets construits, hébergés et maintenus par Loïc Kergoat : Kiwinet, ECF Infoline, serveur Minecraft."
   lang={lang}
 >
   <Navbar lang={lang} currentPath="/projects" />

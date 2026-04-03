@@ -3,7 +3,7 @@
  * BaseLayout.astro
  * Rôle : Layout HTML de base — fournit le <head> complet (meta, favicon, fonts) et le <body> avec slot
  *        pour injecter le contenu de chaque page.
- * Reçoit : title?: string — titre de l'onglet (défaut : "kiwinet.me")
+ * Reçoit : title?: string — titre de l'onglet (défaut : "Kiwinet")
  *          description?: string — meta description SEO (défaut : "Self-hosted website / Open source DevOps infrastructure")
  *          lang?: string — attribut lang de la balise <html> pour l'accessibilité (défaut : "fr")
  * Émet   : <slot /> — point d'injection du contenu de la page
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  title = "kiwinet.me",
+  title = "Kiwinet",
   description = "Self-hosted website / Open source DevOps infrastructure",
   lang = "fr",
 } = Astro.props;

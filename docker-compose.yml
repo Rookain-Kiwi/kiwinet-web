@@ -1,5 +1,5 @@
-# docker-compose.yml : Site principal kiwinet.me
-# Projet  : kiwinet.me
+# docker-compose.yml : Site principal Kiwinet
+# Projet  : Kiwinet
 # VM      : Debian 13.3 ARM AArch64 (Freebox Delta)
 # Image   : ghcr.io/rookain-kiwi/kiwinet-web (Astro + Nginx Alpine)
 # CI/CD   : GitHub Actions → GHCR → déploiement SSH automatique
