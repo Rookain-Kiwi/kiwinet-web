@@ -1,6 +1,5 @@
 # deploy.yml : Pipeline CI/CD — build image Docker ARM64 et déploiement SSH sur la VM
 # Déclenché à chaque push sur main. Build multi-plateforme via Docker Buildx (linux/arm64).
-
 name: Build & Deploy
 
 on:
@@ -45,14 +44,13 @@ jobs:
             ghcr.io/rookain-kiwi/kiwinet-web:latest
             ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}
 
-      # 6. Déployer sur la VM via SSH
+      # 6. Déployer sur la VM via SSH (natif, sans appleboy/ssh-action)
       - name: Deploy to VM
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            cd /opt/kiwinet-infra
-            docker compose pull kiwinet-web
-            docker compose up -d kiwinet-web
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+        run: |
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no $USER@$HOST "cd /opt/kiwinet-infra && docker compose pull kiwinet-web && docker compose up -d kiwinet-web"
