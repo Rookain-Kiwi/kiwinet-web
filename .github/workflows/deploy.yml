@@ -55,4 +55,4 @@ jobs:
           script: |
             cd /opt/kiwinet-infra
             docker compose pull kiwinet-web
-            docker compose up -d kiwinet-webgit
+            docker compose up -d kiwinet-web
