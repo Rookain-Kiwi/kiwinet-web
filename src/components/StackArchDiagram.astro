@@ -24,7 +24,7 @@ const content = {
                     ├── kiwinet.me           → Kiwinet (Astro/Nginx)
                     ├── status.kiwinet.me    → Uptime Kuma
                     ├── grafana.kiwinet.me   → Grafana
-                    ├── plex.kiwinet.me      → Plex Media Server
+                    ├── plex.kiwinet.me      → Container plex (Plex Media Server)
                     ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
   └── minecraft.kiwinet.me:25565 (TCP direct, hors Traefik)`,
@@ -33,12 +33,12 @@ const content = {
   ├── :80/:443  → freebox.kiwinet.me → Traefik
   │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
   │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
-  │                                        ├── plex.kiwinet.me        → Plex Media Server (hors Docker)
+  │                                        ├── plex.kiwinet.me        → Container plex (Plex Media Server)
   │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
   │                                        ├── status.kiwinet.me      → Container uptime-kuma
   │                                        └── grafana.kiwinet.me     → Container grafana
   │
-  ├── :25565    → minecraft.kiwinet.me → Minecraft (TCP brut, hors Docker)
+  ├── :25565    → minecraft.kiwinet.me → Container minecraft (TCP brut, passthrough Traefik)
   ├── :22       → SSH (accès VM, clé ed25519)
   └── :22121    → WireGuard VPN (accès réseau local chiffré, clé par appareil)`,
   },
@@ -53,7 +53,7 @@ const content = {
                     ├── kiwinet.me           → Kiwinet (Astro/Nginx site)
                     ├── status.kiwinet.me    → Uptime Kuma
                     ├── grafana.kiwinet.me   → Grafana
-                    ├── plex.kiwinet.me      → Plex Media Server
+                    ├── plex.kiwinet.me      → Container plex (Plex Media Server)
                     ├── hub.kiwinet.me       → Home Assistant
                     └── traefik.kiwinet.me   → Dashboard (auth-basic)
   └── minecraft.kiwinet.me:25565 (direct TCP, outside Traefik)`,
@@ -62,12 +62,12 @@ const content = {
   ├── :80/:443  → freebox.kiwinet.me → Traefik
   │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
   │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
-  │                                        ├── plex.kiwinet.me        → Plex Media Server (outside Docker)
+  │                                        ├── plex.kiwinet.me        → Container plex (Plex Media Server)
   │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
   │                                        ├── status.kiwinet.me      → Container uptime-kuma
   │                                        └── grafana.kiwinet.me     → Container grafana
   │
-  ├── :25565    → minecraft.kiwinet.me → Minecraft (raw TCP, outside Docker)
+  ├── :25565    → minecraft.kiwinet.me → Container minecraft (raw TCP, Traefik passthrough)
   ├── :22       → SSH (VM access, ed25519 key)
   └── :22121    → WireGuard VPN (encrypted LAN access, one key per device)`,
   },
