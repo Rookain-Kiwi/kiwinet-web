@@ -44,13 +44,16 @@ jobs:
             ghcr.io/rookain-kiwi/kiwinet-web:latest
             ghcr.io/rookain-kiwi/kiwinet-web:${{ github.sha }}
 
-      # 6. Déployer sur la VM via SSH (natif, sans appleboy/ssh-action)
+      # 6. Déployer sur la VM via SSH
+      # La VM tire le repo kiwinet-web puis redémarre le container
       - name: Deploy to VM
-        env:
-          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          HOST: ${{ secrets.DEPLOY_HOST }}
-          USER: ${{ secrets.DEPLOY_USER }}
-        run: |
-          echo "$SSH_KEY" > /tmp/deploy_key
-          chmod 600 /tmp/deploy_key
-          ssh -i /tmp/deploy_key -o StrictHostKeyChecking=no $USER@$HOST "cd /opt/kiwinet-infra && docker compose pull kiwinet-web && docker compose up -d kiwinet-web"
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/kiwinet-web
+            git pull
+            docker compose pull kiwinet-web
+            docker compose up -d kiwinet-web
