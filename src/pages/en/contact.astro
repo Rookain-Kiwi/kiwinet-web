@@ -1,0 +1,318 @@
+---
+/**
+ * en/contact.astro
+ * Role  : Contact page (English version) — contact cards (Email, GitHub, LinkedIn, personal Discord)
+ *         and community Discord server invite block.
+ * Props : none (static page)
+ * Emits : none
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar     from "../../components/Navbar.astro";
+import Footer     from "../../components/Footer.astro";
+
+const lang = "en";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch for DevOps freelance work, collaborations, or to join the Kiwinet community"
+  lang={lang}
+>
+  <Navbar lang={lang} currentPath="/en/contact" />
+
+  <main>
+    <section class="contact-header">
+      <div class="container">
+        <h1 class="contact-title">Contact</h1>
+        <p class="contact-intro">
+          Available for freelance work, DevOps opportunities, or simply to
+          talk infrastructure and open source. Feel free to reach out —
+          I reply within 24 to 48 hours.
+        </p>
+        <span class="badge badge--green">
+          <span class="badge__dot" aria-hidden="true"></span>
+          Available — open to opportunities
+        </span>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+
+        <div class="contact-grid">
+
+          <!-- Email -->
+          <a
+            href="mailto:loic.kergoat.business@kiwinet.me"
+            class="contact-card"
+            aria-label="Send an email"
+          >
+            <div class="card-icon card-icon--blue">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 5l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Email</span>
+              <span class="card-sub">loic.kergoat.business@kiwinet.me</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/Rookain-Kiwi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="GitHub profile"
+          >
+            <div class="card-icon card-icon--neutral">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 1C4.477 1 0 5.477 0 11c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C17.137 19.163 20 15.418 20 11c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">GitHub</span>
+              <span class="card-sub">Rookain-Kiwi</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/loïc-kergoat-51150131a"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="LinkedIn profile"
+          >
+            <div class="card-icon card-icon--blue">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M4.477 3C3.66 3 3 3.66 3 4.477v11.046C3 16.34 3.66 17 4.477 17h11.046C16.34 17 17 16.34 17 15.523V4.477C17 3.66 16.34 3 15.523 3H4.477zm1.2 2.4a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM4.5 8.5h2.4v6.6H4.5V8.5zm3.6 0h2.3v.9c.3-.5 1.1-1 2.3-1 2.4 0 2.8 1.6 2.8 3.6v3.1H13.2V12c0-.9 0-2-1.2-2s-1.4 1-1.4 2v3.1H8.1V8.5z"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">LinkedIn</span>
+              <span class="card-sub">Loïc Kergoat</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <!-- Personal Discord -->
+          <a
+            href="https://discord.com/users/485563988114145300"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="Discord profile"
+          >
+            <div class="card-icon card-icon--purple">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M16.93 4.03A15.85 15.85 0 0013 3c-.17.31-.37.73-.51 1.06a14.67 14.67 0 00-4.98 0A11.3 11.3 0 007 3a15.9 15.9 0 00-3.94 1.04C.43 7.38-.26 10.65.08 13.87c1.68 1.24 3.32 2 4.93 2.49.4-.54.75-1.12 1.05-1.73-.57-.22-1.12-.49-1.64-.8.14-.1.27-.2.4-.31a11.3 11.3 0 009.76 0c.13.11.26.21.4.31-.52.32-1.08.59-1.65.81.3.61.65 1.19 1.05 1.73 1.62-.49 3.26-1.25 4.94-2.5.41-3.78-.7-7.05-2.9-9.84zM6.68 11.9c-.96 0-1.74-.88-1.74-1.96s.77-1.96 1.74-1.96c.97 0 1.75.88 1.75 1.96s-.78 1.96-1.75 1.96zm6.64 0c-.97 0-1.74-.88-1.74-1.96s.77-1.96 1.74-1.96c.97 0 1.75.88 1.75 1.96s-.78 1.96-1.75 1.96z"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">Discord</span>
+              <span class="card-sub">@Rookain</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+        <!-- Discord server block -->
+        <a
+          href="https://discord.gg/Ud53YtjZ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="discord-server"
+          aria-label="Join the Discord server"
+        >
+          <img
+            src="/discord.png"
+            alt="Discord server icon"
+            class="server-img"
+            width="48"
+            height="48"
+          />
+          <div class="server-info">
+            <span class="server-name">Discord Server</span>
+            <span class="server-desc">DevOps, Tech & Gaming · A community that codes, plays and builds</span>
+          </div>
+          <span class="server-join">Join →</span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+/* Header */
+.contact-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.contact-intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+/* Content */
+.contact-content {
+  padding: 40px 0 56px;
+}
+
+/* Card grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-card:hover {
+  border-color: var(--color-border-md);
+  box-shadow: var(--shadow-card);
+}
+
+.card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon--blue    { background: #e8f0fb; color: #1a56a0; }
+.card-icon--neutral { background: var(--color-bg); color: var(--color-text-primary); }
+.card-icon--purple  { background: #eeecfd; color: #4f45b0; }
+
+@media (prefers-color-scheme: dark) {
+  .card-icon--blue    { background: #1a2d4a; color: #7baee8; }
+  .card-icon--neutral { background: var(--color-bg); color: var(--color-text-primary); }
+  .card-icon--purple  { background: #241f48; color: #9b94e8; }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-arrow {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+/* Discord server block */
+.discord-server {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.discord-server:hover {
+  border-color: var(--color-border-md);
+  box-shadow: var(--shadow-card);
+}
+
+.server-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+}
+
+.server-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.server-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.server-desc {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.server-join {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .discord-server { flex-wrap: wrap; }
+  .server-join    { width: 100%; text-align: right; }
+}
+</style>

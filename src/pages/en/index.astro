@@ -1,0 +1,28 @@
+---
+/**
+ * en/index.astro
+ * Role  : Homepage (English version) — assembles Navbar, Hero, Cards and Footer.
+ * Props : none (static page)
+ * Emits : none
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar     from "../../components/Navbar.astro";
+import Hero       from "../../components/Hero.astro";
+import Cards      from "../../components/Cards.astro";
+import Footer     from "../../components/Footer.astro";
+
+const lang = "en";
+---
+
+<BaseLayout
+  title="Kiwinet — DevOps, Gaming and... Kiwis"
+  description="Open source self-hosted infrastructure — reverse proxy, CI/CD, monitoring, gaming. Powered by Kiwinet."
+  lang={lang}
+>
+  <Navbar lang={lang} currentPath="/en" />
+  <main>
+    <Hero lang={lang} />
+    <Cards lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

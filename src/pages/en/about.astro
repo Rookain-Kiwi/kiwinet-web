@@ -1,0 +1,592 @@
+---
+/**
+ * en/about.astro
+ * Role  : About page (English version) — presents Loïc Kergoat: identity, pitch video, professional
+ *         background, skills, education and interests, with a CTA to the Contact page.
+ * Props : none (static page)
+ * Emits : none
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar     from "../../components/Navbar.astro";
+import Footer     from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="About — Loïc Kergoat"
+  description="Background, skills and profile of Loïc Kergoat, DevOps System Administrator."
+  lang="en"
+>
+  <Navbar lang="en" currentPath="/en/about" />
+
+  <main class="about-main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-avatars">
+        <img src="/photo.png" alt="Photo of Loïc Kergoat" class="avatar avatar-photo" />
+        <img src="/avatar.gif" alt="Animated avatar" class="avatar avatar-gif" />
+      </div>
+      <div class="hero-content">
+        <h1>Loïc Kergoat</h1>
+        <p class="hero-role">DevOps System Administrator, Montoir-de-Bretagne</p>
+        <div class="badge-row">
+          <span class="badge badge-teal">DevOps</span>
+          <span class="badge badge-purple">Self-hosting</span>
+          <span class="badge badge-amber">Open source</span>
+        </div>
+        <p class="hero-bio">
+          Not the most linear profile on the market, but probably one of the most adaptable.
+          After the French Navy, BI development and nine years in aeronautical quality,
+          I'm coming back to what drives me: build, automate, administer.
+          Docker, Terraform, CI/CD, Linux — the tools change, the rigour stays.
+        </p>
+        <a href="/cv.pdf" class="cv-link" download>Download résumé</a>
+      </div>
+    </section>
+
+    <!-- Pitch video -->
+    <section class="section">
+      <p class="section-label">Pitch</p>
+      <div class="video-wrapper">
+        <video controls preload="metadata" poster="">
+          <source src="/pitch.mp4" type="video/mp4" />
+          Your browser does not support video playback.
+        </video>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <p class="section-label">Experience</p>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot current"></div>
+          <p class="tl-date">Dec. 2025 to present</p>
+          <p class="tl-title">Bachelor — DevOps System Administrator</p>
+          <p class="tl-company">STUDI, remote, RNCP level 6</p>
+          <ul class="tl-missions">
+            <li>Cloud infrastructure deployment automation</li>
+            <li>Continuous deployment of applications (CI/CD)</li>
+            <li>Monitoring and observability of deployed services</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Aug. 2018 to Sep. 2024</p>
+          <p class="tl-title">Quality Assurance</p>
+          <p class="tl-company">Airbus, Montoir-de-Bretagne</p>
+          <ul class="tl-missions">
+            <li>Quality interface for A320 assembly lines, all standards</li>
+            <li>Post-factory non-conformance processing</li>
+            <li>Internal IT support</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Jun. 2015 to Aug. 2018</p>
+          <p class="tl-title">Quality Control Inspector</p>
+          <p class="tl-company">Airbus, Toulouse</p>
+          <ul class="tl-missions">
+            <li>End-to-end quality management for A350-900 and A350-1000 engine pylons</li>
+            <li>Containment setup, final product inspection</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Jan. 2013 to Jun. 2015</p>
+          <p class="tl-title">BI Developer</p>
+          <p class="tl-company">Airbus IFR Skeyes, Colomiers</p>
+          <ul class="tl-missions">
+            <li>Development and maintenance of the IBIS BI solution in Java</li>
+            <li>Exploitation of the AMASIS database for parts ageing management (SQL, AS400)</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Nov. 2010 to Jan. 2013</p>
+          <p class="tl-title">Infocentre Technician</p>
+          <p class="tl-company">French Navy, Quéven</p>
+          <ul class="tl-missions">
+            <li>Naval aviation logistics centre</li>
+            <li>Indicator needs analysis and tracking / User management and helpdesk</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Jul. 2008 to Nov. 2010</p>
+          <p class="tl-title">Radio Operator</p>
+          <p class="tl-company">French Navy, Rivière Salée</p>
+          <ul class="tl-missions">
+            <li>Setup of naval transmission links</li>
+            <li>Maintenance of radio equipment and antennas</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Jan. 2006 to Jul. 2008</p>
+          <p class="tl-title">Programmer Technician</p>
+          <p class="tl-company">French Navy, Landivisiau</p>
+          <ul class="tl-missions">
+            <li>Mission Preparation Training and Instruction Centre</li>
+            <li>Development of cartography software under Windows (Python)</li>
+            <li>IT fleet management / IT and cartography support on remote deployments</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <p class="tl-date">Aug. 2003 to May 2004</p>
+          <p class="tl-title">Programmer Technician</p>
+          <p class="tl-company">Cyberdyne, Landerneau</p>
+          <ul class="tl-missions">
+            <li>Development of accounting and scheduling tools (WinDEV)</li>
+            <li>Computer hardware repair and maintenance</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <p class="skill-cat">Infrastructure & containers</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Traefik</span>
+            <span class="skill-tag">Debian/Linux</span>
+            <span class="skill-tag">UFW</span>
+            <span class="skill-tag">WireGuard</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">CI/CD & versioning</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">GHCR</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">SSH</span>
+            <span class="skill-tag">ARM64</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Observability</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Loki</span>
+            <span class="skill-tag">Uptime Kuma</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Development</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Astro</span>
+            <span class="skill-tag">Nginx</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <p class="section-label">Education</p>
+      <div class="formations">
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">Certificate in IS Design, Analysis and Programming</p>
+            <span class="formation-year">2010</span>
+          </div>
+          <p class="formation-sub">ETRS Rennes</p>
+        </div>
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">Technical Certificate, Information Systems and Telecommunications</p>
+            <span class="formation-year">2006</span>
+          </div>
+          <p class="formation-sub">CIN Brest</p>
+        </div>
+        <div class="formation-card">
+          <div class="formation-header">
+            <p class="formation-title">BTS in Management IT, software development</p>
+            <span class="formation-year">2003</span>
+          </div>
+          <p class="formation-sub">Saint-Louis Châteaulin</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interests -->
+    <section class="section">
+      <p class="section-label">Interests</p>
+      <div class="hobbies-row">
+        <span class="hobby">Computing & self-hosting</span>
+        <span class="hobby">Music</span>
+        <span class="hobby">Drawing</span>
+        <span class="hobby">Gaming</span>
+        <span class="hobby">DIY</span>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <p class="cta-text">Available for DevOps opportunities or technical collaborations.</p>
+      <a href="/en/contact" class="cta-btn">Get in touch</a>
+    </section>
+
+  </main>
+
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+  .about-main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .hero-avatars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+  }
+
+  .hero-role {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .badge-teal  { background: #E1F5EE; color: #085041; }
+  .badge-purple{ background: #EEEDFE; color: #3C3489; }
+  .badge-amber { background: #FAEEDA; color: #633806; }
+
+  .hero-bio {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .cv-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 5px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cv-link:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  /* Video */
+  .video-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    display: block;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--color-border);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 1.75rem 1.5rem;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+  }
+
+  .tl-dot.current {
+    border-color: #1D9E75;
+    background: #E1F5EE;
+  }
+
+  .tl-date {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    margin-bottom: 3px;
+  }
+
+  .tl-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--color-text);
+  }
+
+  .tl-company {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-missions {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .tl-missions li {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .tl-missions li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-border);
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .skill-card {
+    background: var(--color-surface);
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+  }
+
+  .skill-cat {
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    color: var(--color-muted);
+  }
+
+  /* Education */
+  .formations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .formation-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+
+  .formation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .formation-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .formation-year {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .formation-sub {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+  }
+
+  /* Hobbies */
+  .hobbies-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hobby {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 6px 14px;
+  }
+
+  /* CTA */
+  .cta {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-text {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .cta-btn {
+    font-size: 0.82rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 6px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-btn:hover {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 560px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-avatars {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
