@@ -1,12 +1,12 @@
 # kiwinet-web
 
-Site principal de `kiwinet.me` — construit avec Astro, servi via Nginx Alpine, déployé automatiquement sur la VM.
+Site principal de `Kiwinet` — construit avec Astro, servi via Nginx Alpine, déployé automatiquement sur la VM.
 
 ---
 
 ## Rôle de ce repo
 
-Ce repo contient le code source du site public `kiwinet.me`. Il fait partie de l'infrastructure kiwinet :
+Ce repo contient le code source du site public `Kiwinet`. Il fait partie de l'infrastructure kiwinet :
 
 | Repo                 | Rôle                                  | URL déployée         |
 |----------------------|---------------------------------------|----------------------|
