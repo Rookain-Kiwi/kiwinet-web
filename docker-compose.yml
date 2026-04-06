@@ -4,6 +4,9 @@
 # Image   : ghcr.io/rookain-kiwi/kiwinet-web (Astro + Nginx Alpine)
 # CI/CD   : GitHub Actions → GHCR → déploiement SSH automatique
 
+# ─────────────────────────────────────────────────────────────────────────────
+# SERVICES
+# ─────────────────────────────────────────────────────────────────────────────
 services:
 
   website:
@@ -21,8 +24,12 @@ services:
       - "traefik.http.routers.website.entrypoints=websecure"
       - "traefik.http.routers.website.tls.certresolver=letsencrypt"
       - "traefik.http.services.website.loadbalancer.server.port=80"
+      # Middleware déclaré dans dynamic.yml de kiwinet-infra — applique les headers HTTP de sécurité (HSTS, CSP, X-Frame-Options...)
       - "traefik.http.routers.website.middlewares=secure-headers@file"
 
+# ─────────────────────────────────────────────────────────────────────────────
+# RÉSEAU
+# ─────────────────────────────────────────────────────────────────────────────
 networks:
   proxy:
     external: true
