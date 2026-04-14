@@ -1,0 +1,35 @@
+# docker-compose.yml : Site principal Kiwinet
+# Projet  : Kiwinet
+# VM      : Debian 13.3 ARM AArch64 (Freebox Delta)
+# Image   : ghcr.io/rookain-kiwi/kiwinet-web (Astro + Nginx Alpine)
+# CI/CD   : GitHub Actions → GHCR → déploiement SSH automatique
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SERVICES
+# ─────────────────────────────────────────────────────────────────────────────
+services:
+
+  website:
+    image: ghcr.io/rookain-kiwi/kiwinet-web:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kiwinet-web
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.website.rule=Host(`kiwinet.me`) || Host(`www.kiwinet.me`)"
+      - "traefik.http.routers.website.entrypoints=websecure"
+      - "traefik.http.routers.website.tls.certresolver=letsencrypt"
+      - "traefik.http.services.website.loadbalancer.server.port=80"
+      # Middleware déclaré dans dynamic.yml de kiwinet-infra — applique les headers HTTP de sécurité (HSTS, CSP, X-Frame-Options...)
+      - "traefik.http.routers.website.middlewares=secure-headers@file"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# RÉSEAU
+# ─────────────────────────────────────────────────────────────────────────────
+networks:
+  proxy:
+    external: true
