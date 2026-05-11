@@ -26,8 +26,8 @@ const content = {
       {
         color:  "green",
         label:  "CI/CD",
-        desc:   "Pipeline GitHub Actions : build Astro → image Docker multi-plateforme (linux/arm64 via Docker Buildx) → push GHCR → git pull sur la VM → déploiement Docker Compose. L'architecture ARM64 est traitée comme une contrainte de build démontrée, pas contournée.",
-        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
+        desc:   "Pipeline GitHub Actions : build Astro → image Docker linux/amd64 → push GHCR → déploiement SSH sur VPS Scaleway (port dédié) → Docker Compose. Migration de ARM64 vers AMD64 réalisée lors du passage au VPS — la contrainte d'architecture est documentée comme décision technique.",
+        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/amd64"],
         repo:   "kiwinet-web",
       },
       {
@@ -52,8 +52,8 @@ const content = {
       {
         color:  "green",
         label:  "CI/CD",
-        desc:   "GitHub Actions pipeline: Astro build → multi-platform Docker image (linux/arm64 via Docker Buildx) → push to GHCR → git pull on the VM → Docker Compose deployment. The ARM64 constraint is treated as a demonstrated build competency, not a workaround.",
-        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/arm64"],
+        desc:   "GitHub Actions pipeline: Astro build → linux/amd64 Docker image → push to GHCR → SSH deployment on Scaleway VPS (dedicated port) → Docker Compose. Migrated from ARM64 to AMD64 as part of the VPS migration — the architecture change is documented as a deliberate technical decision.",
+        tags:   ["GitHub Actions", "Docker Buildx", "GHCR", "SSH deploy", "linux/amd64"],
         repo:   "kiwinet-web",
       },
       {
