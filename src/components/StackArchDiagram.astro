@@ -16,60 +16,76 @@ const content = {
   fr: {
     macroTitle:    "Vue d'ensemble",
     detailTitle:   "Architecture détaillée",
-    macroNote:     "Traefik est le point d'entrée unique de la VM : il gère le routage, le SSL automatique et l'isolation des services. Minecraft transite par Traefik en mode TCP passthrough — le trafic est routé sans déchiffrement TLS.",
+    macroNote:     "L'infrastructure est hybride : kiwinet.me est hébergé sur un VPS Scaleway (souveraineté européenne, CI/CD automatisé), tandis que tous les services personnels et d'observabilité tournent sur une VM auto-hébergée. Traefik gère le routage, le SSL automatique et l'isolation des services côté VM. Minecraft transite via Traefik en mode TCP passthrough — le trafic est routé sans déchiffrement TLS.",
     detailNote:    "L'accès à l'interface d'administration de la Freebox ne passe pas par le réseau public. Il transite exclusivement par un tunnel WireGuard — zéro surface d'attaque, authentification par clé, clé distincte par appareil.",
     macroArch: `Internet
-  └── freebox.kiwinet.me (point d'entrée)
-           └── Traefik (reverse proxy + SSL Let's Encrypt)
-                    ├── kiwinet.me           → Kiwinet (Astro/Nginx)
-                    ├── status.kiwinet.me    → Uptime Kuma
-                    ├── grafana.kiwinet.me   → Grafana
-                    ├── plex.kiwinet.me      → Container plex (Plex Media Server)
-                    ├── hub.kiwinet.me       → Home Assistant
-                    └── traefik.kiwinet.me   → Dashboard (auth-basic)
+  │
+  ├── kiwinet.me → VPS Scaleway (Traefik + Astro/Nginx, CI/CD GitHub Actions)
+  │
+  └── freebox.kiwinet.me → Traefik VM (reverse proxy + SSL Let's Encrypt)
+           ├── status.kiwinet.me    → Uptime Kuma
+           ├── grafana.kiwinet.me   → Grafana
+           ├── plex.kiwinet.me      → Plex Media Server
+           ├── hub.kiwinet.me       → Home Assistant
+           ├── calibre.kiwinet.me   → Calibre-Web
+           ├── komga.kiwinet.me     → Komga
+           └── traefik.kiwinet.me   → Dashboard Traefik (auth-basic)
+  │
   └── minecraft.kiwinet.me:25565 (TCP passthrough Traefik)`,
     detailArch: `Internet
   │
-  ├── :80/:443  → freebox.kiwinet.me → Traefik
-  │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
-  │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
+  ├── :80/:443  → kiwinet.me → VPS Scaleway
+  │                                 └── Traefik → Container kiwinet-web (Astro/Nginx)
+  │
+  ├── :80/:443  → freebox.kiwinet.me → Traefik VM
+  │                                        ├── status.kiwinet.me      → Container uptime-kuma
+  │                                        ├── grafana.kiwinet.me     → Container grafana
   │                                        ├── plex.kiwinet.me        → Container plex (Plex Media Server)
   │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
-  │                                        ├── status.kiwinet.me      → Container uptime-kuma
-  │                                        └── grafana.kiwinet.me     → Container grafana
+  │                                        ├── calibre.kiwinet.me     → Container calibre-web
+  │                                        ├── komga.kiwinet.me       → Container komga
+  │                                        └── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
   │
   ├── :25565    → minecraft.kiwinet.me → Container minecraft (TCP brut, passthrough Traefik)
   ├── :22       → SSH (accès VM, clé ed25519)
-  └── :22121    → WireGuard VPN (accès réseau local chiffré, clé par appareil)`,
+  └── :XXXXX    → WireGuard VPN (accès réseau local chiffré, clé par appareil)`,
   },
   en: {
     macroTitle:    "Overview",
     detailTitle:   "Detailed architecture",
-    macroNote:     "Traefik is the single entry point of the VM: it handles routing, automatic SSL and service isolation. Minecraft goes through Traefik in TCP passthrough mode — traffic is routed without TLS termination.",
+    macroNote:     "The infrastructure is hybrid: kiwinet.me is hosted on a Scaleway VPS (European sovereignty, automated CI/CD), while all personal services and observability run on a self-hosted VM. Traefik handles routing, automatic SSL and service isolation on the VM side. Minecraft goes through Traefik in TCP passthrough mode — traffic is routed without TLS termination.",
     detailNote:    "Access to the Freebox admin interface is not publicly exposed. It goes exclusively through a WireGuard tunnel — zero attack surface, key-based authentication, one key per device.",
     macroArch: `Internet
-  └── freebox.kiwinet.me (entry point)
-           └── Traefik (reverse proxy + SSL Let's Encrypt)
-                    ├── kiwinet.me           → Kiwinet (Astro/Nginx site)
-                    ├── status.kiwinet.me    → Uptime Kuma
-                    ├── grafana.kiwinet.me   → Grafana
-                    ├── plex.kiwinet.me      → Container plex (Plex Media Server)
-                    ├── hub.kiwinet.me       → Home Assistant
-                    └── traefik.kiwinet.me   → Dashboard (auth-basic)
+  │
+  ├── kiwinet.me → Scaleway VPS (Traefik + Astro/Nginx, GitHub Actions CI/CD)
+  │
+  └── freebox.kiwinet.me → VM Traefik (reverse proxy + SSL Let's Encrypt)
+           ├── status.kiwinet.me    → Uptime Kuma
+           ├── grafana.kiwinet.me   → Grafana
+           ├── plex.kiwinet.me      → Plex Media Server
+           ├── hub.kiwinet.me       → Home Assistant
+           ├── calibre.kiwinet.me   → Calibre-Web
+           ├── komga.kiwinet.me     → Komga
+           └── traefik.kiwinet.me   → Traefik Dashboard (auth-basic)
+  │
   └── minecraft.kiwinet.me:25565 (TCP passthrough Traefik)`,
     detailArch: `Internet
   │
-  ├── :80/:443  → freebox.kiwinet.me → Traefik
-  │                                        ├── kiwinet.me / www       → Container kiwinet-web (Nginx)
-  │                                        ├── traefik.kiwinet.me     → Dashboard Traefik (auth-basic)
+  ├── :80/:443  → kiwinet.me → Scaleway VPS
+  │                                 └── Traefik → Container kiwinet-web (Astro/Nginx)
+  │
+  ├── :80/:443  → freebox.kiwinet.me → VM Traefik
+  │                                        ├── status.kiwinet.me      → Container uptime-kuma
+  │                                        ├── grafana.kiwinet.me     → Container grafana
   │                                        ├── plex.kiwinet.me        → Container plex (Plex Media Server)
   │                                        ├── hub.kiwinet.me         → Home Assistant (network_mode: host)
-  │                                        ├── status.kiwinet.me      → Container uptime-kuma
-  │                                        └── grafana.kiwinet.me     → Container grafana
+  │                                        ├── calibre.kiwinet.me     → Container calibre-web
+  │                                        ├── komga.kiwinet.me       → Container komga
+  │                                        └── traefik.kiwinet.me     → Traefik Dashboard (auth-basic)
   │
   ├── :25565    → minecraft.kiwinet.me → Container minecraft (raw TCP, Traefik passthrough)
   ├── :22       → SSH (VM access, ed25519 key)
-  └── :22121    → WireGuard VPN (encrypted LAN access, one key per device)`,
+  └── :XXXXX    → WireGuard VPN (encrypted LAN access, one key per device)`,
   },
 };
 
