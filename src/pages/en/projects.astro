@@ -39,6 +39,7 @@ const projects = [
     tags: ["AWS EKS", "Terraform", "Kubernetes", "GitHub Actions", "Spring Boot", "Angular", "RDS", "Lambda", "ECR", "ELK Stack"],
     services: [],
     link: { label: "View repositories", href: "https://github.com/stars/Rookain-Kiwi/lists/infoline", external: true },
+    notation: { label: "Grading", href: "/en/projects/ecf-notation" },
     note: "Available on GitHub",
   },
   {
@@ -151,6 +152,14 @@ const projects = [
                     <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
                   </svg>
                 </a>
+                {p.notation && (
+                  <a href={p.notation.href} class="proj-link">
+                    {p.notation.label}
+                    <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="proj-link-icon">
+                      <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </a>
+                )}
               </div>
             )}
           </div>
