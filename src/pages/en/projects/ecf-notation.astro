@@ -31,22 +31,20 @@ import Footer     from "../../../components/Footer.astro";
 
     <section class="section">
       <p class="section-label">Evaluator</p>
-      <div class="evaluator-card">
+      <a
+        href="https://www.linkedin.com/in/ala-atrash-916b12100/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="evaluator-card"
+        aria-label="View Ala Atrash's LinkedIn profile"
+      >
         <img src="/ala-atrash.jpg" alt="Profile photo of Ala Atrash" class="evaluator-photo" />
         <div class="evaluator-info">
           <p class="evaluator-name">Ala Atrash</p>
           <p class="evaluator-title">Fullstack Developer with DevOps orientation</p>
-          <a
-            href="https://www.linkedin.com/in/ala-atrash-916b12100/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="linkedin-link"
-            aria-label="View Ala Atrash's LinkedIn profile"
-          >
-            View LinkedIn profile ↗
-          </a>
+          <span class="linkedin-hint">View LinkedIn profile ↗</span>
         </div>
-      </div>
+      </a>
     </section>
 
     <section class="section">
@@ -169,51 +167,21 @@ import Footer     from "../../../components/Footer.astro";
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
-}
-
-.evaluator-photo {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--color-border);
-  flex-shrink: 0;
-}
-
-.evaluator-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.evaluator-name {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  margin: 0;
-}
-
-.evaluator-title {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.linkedin-link {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
   text-decoration: none;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 4px 10px;
-  margin-top: 6px;
-  display: inline-block;
-  transition: color 0.15s, border-color 0.15s;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.linkedin-link:hover {
-  color: var(--color-text-primary);
+.evaluator-card:hover {
   border-color: var(--color-border-md);
+  box-shadow: var(--shadow-card);
+}
+
+.linkedin-hint {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  margin-top: 4px;
+  display: block;
 }
 
 .notation-block {
