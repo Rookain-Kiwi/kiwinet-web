@@ -19,9 +19,9 @@ const content = {
       {
         color:  "blue",
         label:  "Infrastructure",
-        desc:   "VM Debian GNU/Linux sur ARM64, auto-hébergée. Traefik comme reverse proxy unique, SSL Let's Encrypt automatique via HTTP Challenge. WireGuard pour l'accès sécurisé au réseau local.",
-        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64"],
-        repo:   "kiwinet-infra",
+        desc:   "Architecture hybride : VM Debian GNU/Linux ARM64 auto-hébergée pour les services personnels, VPS Scaleway (fr-par-1) pour le site portfolio. Traefik comme reverse proxy unique sur chaque hôte, SSL Let's Encrypt automatique via HTTP Challenge. WireGuard pour l'accès sécurisé au réseau local. Provisioning automatisé via Ansible (dual-target VM + VPS) et Terraform pour l'infrastructure cloud Scaleway.",
+        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64", "Ansible", "Terraform", "Scaleway"],
+        repo:   "kiwinet-infra-ansible · kiwinet-infra-cloud",
       },
       {
         color:  "green",
@@ -45,9 +45,9 @@ const content = {
       {
         color:  "blue",
         label:  "Infrastructure",
-        desc:   "Self-hosted VM running Debian GNU/Linux on ARM64. Traefik as the single reverse proxy, automatic Let's Encrypt SSL via HTTP Challenge. WireGuard for secure access to the local network.",
-        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64"],
-        repo:   "kiwinet-infra",
+        desc:   "Hybrid architecture: self-hosted Debian GNU/Linux ARM64 VM for personal services, Scaleway VPS (fr-par-1) for the portfolio site. Traefik as the single reverse proxy on each host, automatic Let's Encrypt SSL via HTTP Challenge. WireGuard for secure access to the local network. Automated provisioning via Ansible (dual-target VM + VPS) and Terraform for Scaleway cloud infrastructure.",
+        tags:   ["Traefik", "Let's Encrypt", "Docker", "WireGuard", "Debian ARM64", "Ansible", "Terraform", "Scaleway"],
+        repo:   "kiwinet-infra-ansible · kiwinet-infra-cloud",
       },
       {
         color:  "green",
