@@ -20,13 +20,28 @@ Site portfolio de Kiwinet — construit avec Astro, servi via Nginx Alpine, dép
 ```
 kiwinet-web/
 ├── src/
-│   └── pages/              # Pages Astro (FR + EN)
-├── public/                 # Assets statiques
-├── Dockerfile              # Build multi-stage : Astro → Nginx Alpine
-├── docker-compose.yml      # Déploiement VPS Scaleway (labels Traefik)
-├── docker-compose.vm.yml   # Config Freebox (legacy, non utilisée en CI)
+│   └── pages/
+│       ├── index.astro             # Accueil FR
+│       ├── about.astro             # À propos FR
+│       ├── projects.astro          # Projets FR
+│       ├── stack.astro             # Stack technique FR
+│       ├── contact.astro           # Contact FR
+│       ├── projects/
+│       │   └── ecf-notation.astro  # Notation ECF Infoline FR
+│       └── en/                     # Pages EN (même structure)
+│           └── projects/
+│               └── ecf-notation.astro
+├── public/
+│   ├── cv.pdf                      # CV FR (EN à venir)
+│   ├── pitch.mp4                   # Pitch vidéo FR (EN à venir)
+│   ├── ala-atrash.jpg              # Photo évaluateur ECF
+│   ├── ala-atrash.mp3              # Extrait audio notation ECF
+│   └── ecf-corrige.pdf             # Copie corrigée ECF (autorisé par l'évaluateur)
+├── Dockerfile                      # Build multi-stage : Astro → Nginx Alpine
+├── docker-compose.yml              # Déploiement VPS Scaleway (labels Traefik)
+├── docker-compose.vm.yml           # Config Freebox (legacy, non utilisée en CI)
 └── .github/workflows/
-    └── deploy.yml          # Pipeline CI/CD
+    └── deploy.yml                  # Pipeline CI/CD
 ```
 
 ---
