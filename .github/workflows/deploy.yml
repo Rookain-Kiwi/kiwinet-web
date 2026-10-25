@@ -11,11 +11,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    # Droits du jeton intégré (GITHUB_TOKEN) : lecture du code, écriture des paquets (GHCR).
-    # Rien d'autre : tout le reste est refusé.
+    # Droits du jeton intégré (GITHUB_TOKEN) : lecture du code seulement.
     permissions:
       contents: read
-      packages: write
 
     steps:
       # 1. Récupérer le code
@@ -26,14 +24,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # 3. Se connecter à GHCR avec le jeton intégré au workflow : il expire à la fin
-      # du job, il n'y a plus de jeton personnel à renouveler
+      # 3. Se connecter à GHCR (jeton personnel classic, portée write:packages, à renouveler
+      # avant son expiration : secret GHCR_TOKEN)
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       # 4. Builder et pousser l'image AMD64
       # Deux tags poussés : latest (commodité) et SHA du commit (rollback immuable)
