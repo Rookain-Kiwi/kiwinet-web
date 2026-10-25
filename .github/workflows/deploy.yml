@@ -49,8 +49,9 @@ jobs:
       # La clé de déploiement est restreinte côté serveur à un seul script
       # (deploy-kiwinet-web : docker compose pull website, puis up -d website) :
       # le serveur ignore le contenu de « script », que l'action exige pourtant.
-      # fingerprint : empreinte de la clé d'hôte du serveur (information publique),
-      # à mettre à jour si le serveur change (migration).
+      # fingerprint : empreinte de la clé d'hôte ECDSA du serveur (information publique) :
+      # le client SSH de l'action préfère ECDSA à ed25519 (ordre par défaut de Go).
+      # À mettre à jour si le serveur change (migration).
       - name: Deploy to VPS
         uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
         with:
@@ -58,5 +59,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.DEPLOY_PORT }}
-          fingerprint: SHA256:gV7Sh79/f+f9B2AKrIfYqSbsI0wtw+nlzMXJJE4IqsU
+          fingerprint: SHA256:IQuo6rp4qsICQ07LPdzIDRCv86i8CY19+BFPTTYJFAg
           script: deploy-kiwinet-web
